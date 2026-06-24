@@ -1,0 +1,45 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# Ambientes e segredos (nunca committar)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets.json
+
+# Dependências
+node_modules/
+
+# Build outputs
+dist/
+build/
+.cache/
+
+# IDE
+.vscode/settings.json
+.idea/
+*.suo
+*.swp
+
+# Skills do Claude Code (interno de desenvolvimento)
+skills-lock.json
+*.skill.md
+code-reviewer-skill.md
+deploy-audit-skill.md
+geo-audit-skill.md
+.agents/
+
+# Documentos internos de desenvolvimento (não devem ir ao repositório público)
+briefing_site_levanyrogge.md
+copy_levany_rogge.md
+design_system_levanyrogge.md
+plano_implementacao_levanyrogge.md
+
+# Arquivos temporários
+*.tmp
+*.temp

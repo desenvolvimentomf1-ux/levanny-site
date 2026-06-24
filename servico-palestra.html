@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Palestras de Justiça Restaurativa, proteção infantil e Comunicação Não Violenta com Levany Rogge. Mais de 15 palestras e oficinas de prevenção realizadas para escolas, prefeituras e instituições.">
+  <title>Palestras | Levany Rogge — Proteção Infantil e Justiça Restaurativa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: #1C2B3A; background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    :root {
+      --navy: #0F2339; --navy-mid: #1A3A5C; --orange: #E8640A;
+      --orange-soft: #FFF3EA; --light: #F7F9FC; --border: #DDE5EE;
+      --text: #1C2B3A; --muted: #5A7080;
+      --serif: 'Playfair Display', serif; --sans: 'Inter', system-ui, sans-serif;
+    }
+    .container { max-width: 1160px; margin-inline: auto; padding-inline: 24px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: 5px; font-family: var(--sans); font-size: 0.875rem; font-weight: 600; cursor: pointer; border: 2px solid transparent; transition: all 0.2s ease; white-space: nowrap; }
+    .btn-orange { background: var(--orange); color: #fff; border-color: var(--orange); }
+    .btn-orange:hover { background: #CC5508; border-color: #CC5508; transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--navy-mid); border-color: var(--navy-mid); }
+    .btn-outline:hover { background: var(--navy-mid); color: #fff; }
+    .eyebrow { display: block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+
+    /* HEADER */
+    header { background: var(--navy); position: sticky; top: 0; z-index: 100; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding-block: 14px; gap: 24px; }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-box { width: 36px; height: 36px; background: var(--orange); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 0.875rem; font-weight: 700; color: #fff; }
+    .logo-name { font-family: var(--serif); font-size: 0.9375rem; font-weight: 700; color: #fff; }
+    .logo-sub { font-size: 0.625rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+    .back-link { font-size: 0.8125rem; color: rgba(255,255,255,0.65); display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .back-link:hover { color: var(--orange); }
+
+    /* HERO */
+    .page-hero { background: var(--navy); padding: 64px 0; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,100,10,0.15); border: 1px solid rgba(232,100,10,0.3); border-radius: 20px; padding: 6px 14px; margin-bottom: 20px; }
+    .hero-badge i { color: var(--orange); font-size: 0.875rem; }
+    .hero-badge span { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); }
+    .page-hero h1 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 16px; }
+    .page-hero .lead { font-size: 1.0625rem; color: rgba(255,255,255,0.65); max-width: 560px; line-height: 1.7; margin-bottom: 32px; }
+
+    /* CONTENT */
+    .content-section { padding-block: 80px; }
+    .content-grid { display: grid; grid-template-columns: 1fr 340px; gap: 64px; align-items: start; }
+    .content-main h2 { font-family: var(--serif); font-size: 1.75rem; font-weight: 700; color: var(--navy); margin-bottom: 16px; }
+    .content-main p { font-size: 0.9375rem; color: var(--text); line-height: 1.75; margin-bottom: 20px; }
+    .content-main h3 { font-size: 1.125rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; margin-top: 32px; }
+    .check-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .check-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text); line-height: 1.55; }
+    .check-list li i { color: var(--orange); margin-top: 3px; flex-shrink: 0; }
+    .topics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
+    .topic-card { background: var(--light); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+    .topic-card i { color: var(--orange); margin-bottom: 8px; display: block; }
+    .topic-card strong { font-size: 0.875rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px; }
+    .topic-card span { font-size: 0.8125rem; color: var(--muted); }
+
+    /* SIDEBAR */
+    .sidebar-card { background: var(--light); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+    .sidebar-card h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+    .sidebar-meta { display: flex; flex-direction: column; gap: 12px; }
+    .sidebar-meta-item { display: flex; align-items: center; gap: 10px; font-size: 0.875rem; color: var(--text); }
+    .sidebar-meta-item i { color: var(--orange); width: 16px; text-align: center; }
+    .sidebar-cta { background: var(--navy); border-radius: 12px; padding: 24px; text-align: center; }
+    .sidebar-cta p { font-size: 0.875rem; color: rgba(255,255,255,0.65); margin-bottom: 16px; line-height: 1.55; }
+    .sidebar-cta .btn { width: 100%; justify-content: center; }
+
+    /* AUDIENCE */
+    .audience-section { background: var(--orange-soft); padding-block: 64px; }
+    .audience-section h2 { font-family: var(--serif); font-size: 1.75rem; font-weight: 700; color: var(--navy); margin-bottom: 32px; }
+    .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .audience-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .audience-card i { color: var(--orange); font-size: 1.25rem; margin-bottom: 10px; display: block; }
+    .audience-card h3 { font-size: 0.9375rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .audience-card p { font-size: 0.8125rem; color: var(--muted); line-height: 1.55; }
+
+    /* CTA SECTION */
+    .cta-section { background: var(--navy); padding-block: 64px; text-align: center; }
+    .cta-section h2 { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .cta-section p { color: rgba(255,255,255,0.65); font-size: 0.9375rem; margin-bottom: 28px; max-width: 500px; margin-inline: auto; margin-bottom: 28px; }
+    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* FOOTER */
+    footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.07); padding-block: 24px; }
+    .footer-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .footer-bar span { font-size: 0.8125rem; color: rgba(255,255,255,0.35); }
+    .footer-bar a { font-size: 0.8125rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .footer-bar a:hover { color: var(--orange); }
+
+    @media (max-width: 900px) { .content-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .audience-grid { grid-template-columns: 1fr; } .topics-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-box">LR</div>
+        <div>
+          <div class="logo-name">Levany Rogge</div>
+          <div class="logo-sub">Proteção Estratégica</div>
+        </div>
+      </a>
+      <a href="index.html#servicos" class="back-link">
+        <i class="fas fa-arrow-left"></i> Voltar aos Serviços
+      </a>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-badge"><i class="fas fa-microphone"></i><span>Serviço</span></div>
+    <h1>Palestras de Justiça<br>Restaurativa e Proteção Infantil</h1>
+    <p class="lead">Apresentações de alto impacto sobre Justiça Restaurativa, proteção à infância e Comunicação Não Violenta. Mais de 15 palestras e oficinas de prevenção realizadas para escolas, prefeituras e instituições.</p>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a href="https://wa.me/18572434270?text=Olá%2C%20Levany!%20Tenho%20interesse%20em%20uma%20palestra.%20Gostaria%20de%20saber%20mais." target="_blank" rel="noopener noreferrer" class="btn btn-orange">
+        <i class="fab fa-whatsapp"></i> Solicitar Palestra
+      </a>
+      <a href="index.html#contato" class="btn" style="background:rgba(255,255,255,0.08); color:#fff; border-color:rgba(255,255,255,0.3);">
+        Ver outros serviços
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <div class="content-grid">
+      <div class="content-main">
+        <span class="eyebrow">SOBRE A PALESTRA</span>
+        <h2>Conscientização que gera mudança real</h2>
+        <p>Com mais de 30 anos de experiência em pedagogia, proteção infantil e Justiça Restaurativa, Levany Rogge conduz palestras transformadoras que combinam conhecimento técnico, casos reais (anonimizados) e linguagem acessível. Cada apresentação é adaptada ao perfil do público e às necessidades da instituição.</p>
+        <p>Mais do que informar, o objetivo é despertar responsabilidade coletiva. Ao final, os participantes saem com clareza sobre o que podem — e devem — fazer para proteger as crianças ao seu redor e construir uma cultura de paz.</p>
+
+        <h3>Temas das palestras</h3>
+        <div class="topics-grid">
+          <div class="topic-card">
+            <i class="fas fa-scale-balanced"></i>
+            <strong>Justiça Restaurativa</strong>
+            <span>Aplicação em contextos escolares e sociais, cultura de paz e escuta ativa</span>
+          </div>
+          <div class="topic-card">
+            <i class="fas fa-shield-heart"></i>
+            <strong>Proteção à Infância</strong>
+            <span>Direitos da criança, prevenção de violências e responsabilidade coletiva</span>
+          </div>
+          <div class="topic-card">
+            <i class="fas fa-comments"></i>
+            <strong>Comunicação Não Violenta (CNV)</strong>
+            <span>Para pais, educadores e lideranças — como dialogar com empatia e segurança</span>
+          </div>
+          <div class="topic-card">
+            <i class="fas fa-circle-nodes"></i>
+            <strong>Círculos de Fortalecimento de Vínculos</strong>
+            <span>Oficinas práticas com crianças, adolescentes e adultos para construção de laços saudáveis</span>
+          </div>
+          <div class="topic-card">
+            <i class="fas fa-hand-holding-heart"></i>
+            <strong>Prevenção de Abuso Infantil</strong>
+            <span>Como criar redes de proteção efetivas e empoderar crianças e famílias</span>
+          </div>
+          <div class="topic-card">
+            <i class="fas fa-people-group"></i>
+            <strong>Cultura de Paz nas Escolas</strong>
+            <span>Práticas restaurativas para a resolução de conflitos e construção de ambientes seguros</span>
+          </div>
+        </div>
+
+        <h3>O que esperar</h3>
+        <ul class="check-list">
+          <li><i class="fas fa-check-circle"></i>Conteúdo adaptado ao perfil e contexto da sua instituição</li>
+          <li><i class="fas fa-check-circle"></i>Mais de 15 palestras e oficinas de prevenção já realizadas</li>
+          <li><i class="fas fa-check-circle"></i>Linguagem acessível, com base em 30+ anos de experiência prática</li>
+          <li><i class="fas fa-check-circle"></i>Espaço para perguntas e discussão ao vivo</li>
+          <li><i class="fas fa-check-circle"></i>Material de apoio enviado após a palestra</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="sidebar-card">
+          <h4>Informações</h4>
+          <div class="sidebar-meta">
+            <div class="sidebar-meta-item"><i class="fas fa-clock"></i><span>1h a 2h por sessão</span></div>
+            <div class="sidebar-meta-item"><i class="fas fa-wifi"></i><span>Presencial ou online</span></div>
+            <div class="sidebar-meta-item"><i class="fas fa-users"></i><span>Sem limite de participantes</span></div>
+            <div class="sidebar-meta-item"><i class="fas fa-map-marker-alt"></i><span>Todo o Brasil</span></div>
+            <div class="sidebar-meta-item"><i class="fas fa-certificate"></i><span>Certificado opcional</span></div>
+          </div>
+        </div>
+        <div class="sidebar-cta">
+          <p>Quer levar esta palestra para a sua escola, empresa ou evento?</p>
+          <a href="https://wa.me/18572434270?text=Olá%2C%20Levany!%20Tenho%20interesse%20em%20agendar%20uma%20palestra." target="_blank" rel="noopener noreferrer" class="btn btn-orange">
+            <i class="fab fa-whatsapp"></i> Solicitar agora
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="audience-section">
+  <div class="container">
+    <span class="eyebrow">PÚBLICO IDEAL</span>
+    <h2>Para quem é esta palestra?</h2>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <i class="fas fa-school"></i>
+        <h3>Escolas e Instituições de Ensino</h3>
+        <p>Para toda a equipe pedagógica e administrativa — professores, coordenadores, diretores e auxiliares.</p>
+      </div>
+      <div class="audience-card">
+        <i class="fas fa-landmark"></i>
+        <h3>Prefeituras e Órgãos Públicos</h3>
+        <p>Secretarias de educação, assistência social e segurança pública que queiram capacitar suas equipes.</p>
+      </div>
+      <div class="audience-card">
+        <i class="fas fa-people-group"></i>
+        <h3>Empresas e Comunidades Religiosas</h3>
+        <p>Organizações que querem promover cultura de paz e proteção para seus colaboradores, famílias e comunidades.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Pronta para agendar uma palestra?</h2>
+    <p>Entre em contato e vamos conversar sobre o tema e formato ideal para o seu evento ou instituição.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/18572434270?text=Olá%2C%20Levany!%20Tenho%20interesse%20em%20agendar%20uma%20palestra." target="_blank" rel="noopener noreferrer" class="btn btn-orange">
+        <i class="fab fa-whatsapp"></i> Falar pelo WhatsApp
+      </a>
+      <a href="index.html#contato" class="btn" style="background:rgba(255,255,255,0.08); color:#fff; border-color:rgba(255,255,255,0.3);">
+        Preencher formulário
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-bar">
+      <span>© 2026 Levany Rogge · Proteção Infantil</span>
+      <a href="index.html">← Voltar ao site</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

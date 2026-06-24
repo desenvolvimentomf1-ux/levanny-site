@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Capacitação institucional em Justiça Restaurativa e proteção infantil com Levany Rogge. Atendimento a prefeituras, escolas, IASES, Guarda Municipal e comunidades imigrantes nos EUA.">
+  <title>Capacitação Institucional | Levany Rogge — Justiça Restaurativa e Proteção Infantil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: #1C2B3A; background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; } a { text-decoration: none; color: inherit; } ul { list-style: none; }
+    :root { --navy:#0F2339; --navy-mid:#1A3A5C; --orange:#E8640A; --orange-soft:#FFF3EA; --light:#F7F9FC; --border:#DDE5EE; --text:#1C2B3A; --muted:#5A7080; --serif:'Playfair Display',serif; --sans:'Inter',system-ui,sans-serif; }
+    .container { max-width: 1160px; margin-inline: auto; padding-inline: 24px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: 5px; font-family: var(--sans); font-size: 0.875rem; font-weight: 600; cursor: pointer; border: 2px solid transparent; transition: all 0.2s ease; white-space: nowrap; }
+    .btn-orange { background: var(--orange); color: #fff; border-color: var(--orange); }
+    .btn-orange:hover { background: #CC5508; transform: translateY(-1px); }
+    .eyebrow { display: block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+    header { background: var(--navy); position: sticky; top: 0; z-index: 100; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding-block: 14px; }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-box { width: 36px; height: 36px; background: var(--orange); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 0.875rem; font-weight: 700; color: #fff; }
+    .logo-name { font-family: var(--serif); font-size: 0.9375rem; font-weight: 700; color: #fff; }
+    .logo-sub { font-size: 0.625rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+    .back-link { font-size: 0.8125rem; color: rgba(255,255,255,0.65); display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .back-link:hover { color: var(--orange); }
+    .page-hero { background: var(--navy); padding: 64px 0; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,100,10,0.15); border: 1px solid rgba(232,100,10,0.3); border-radius: 20px; padding: 6px 14px; margin-bottom: 20px; }
+    .hero-badge i { color: var(--orange); font-size: 0.875rem; }
+    .hero-badge span { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); }
+    .page-hero h1 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 16px; }
+    .page-hero .lead { font-size: 1.0625rem; color: rgba(255,255,255,0.65); max-width: 560px; line-height: 1.7; margin-bottom: 32px; }
+    .content-section { padding-block: 80px; }
+    .content-grid { display: grid; grid-template-columns: 1fr 340px; gap: 64px; align-items: start; }
+    .content-main h2 { font-family: var(--serif); font-size: 1.75rem; font-weight: 700; color: var(--navy); margin-bottom: 16px; }
+    .content-main p { font-size: 0.9375rem; color: var(--text); line-height: 1.75; margin-bottom: 20px; }
+    .content-main h3 { font-size: 1.125rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; margin-top: 32px; }
+    .check-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .check-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text); line-height: 1.55; }
+    .check-list li i { color: var(--orange); margin-top: 3px; flex-shrink: 0; }
+    .phases { display: flex; flex-direction: column; gap: 0; margin-bottom: 32px; }
+    .phase { display: flex; gap: 20px; align-items: flex-start; padding-bottom: 24px; position: relative; }
+    .phase:not(:last-child)::before { content: ''; position: absolute; left: 17px; top: 38px; bottom: 0; width: 2px; background: var(--border); }
+    .phase-dot { width: 36px; height: 36px; flex-shrink: 0; background: var(--orange-soft); border: 2px solid var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: 700; color: var(--orange); }
+    .phase-content h4 { font-size: 0.9375rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .phase-content p { font-size: 0.875rem; color: var(--muted); line-height: 1.55; }
+    .sidebar-card { background: var(--light); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+    .sidebar-card h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+    .sidebar-meta { display: flex; flex-direction: column; gap: 12px; }
+    .sidebar-meta-item { display: flex; align-items: center; gap: 10px; font-size: 0.875rem; color: var(--text); }
+    .sidebar-meta-item i { color: var(--orange); width: 16px; text-align: center; }
+    .sidebar-cta { background: var(--navy); border-radius: 12px; padding: 24px; text-align: center; }
+    .sidebar-cta p { font-size: 0.875rem; color: rgba(255,255,255,0.65); margin-bottom: 16px; line-height: 1.55; }
+    .sidebar-cta .btn { width: 100%; justify-content: center; }
+    .audience-section { background: var(--orange-soft); padding-block: 64px; }
+    .audience-section h2 { font-family: var(--serif); font-size: 1.75rem; font-weight: 700; color: var(--navy); margin-bottom: 32px; }
+    .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .audience-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .audience-card i { color: var(--orange); font-size: 1.25rem; margin-bottom: 10px; display: block; }
+    .audience-card h3 { font-size: 0.9375rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .audience-card p { font-size: 0.8125rem; color: var(--muted); line-height: 1.55; }
+    .cta-section { background: var(--navy); padding-block: 64px; text-align: center; }
+    .cta-section h2 { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .cta-section p { color: rgba(255,255,255,0.65); font-size: 0.9375rem; max-width: 500px; margin-inline: auto; margin-bottom: 28px; }
+    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.07); padding-block: 24px; }
+    .footer-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .footer-bar span { font-size: 0.8125rem; color: rgba(255,255,255,0.35); }
+    .footer-bar a { font-size: 0.8125rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .footer-bar a:hover { color: var(--orange); }
+    @media (max-width: 900px) { .content-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .audience-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-box">LR</div>
+        <div><div class="logo-name">Levany Rogge</div><div class="logo-sub">Proteção Estratégica</div></div>
+      </a>
+      <a href="index.html#servicos" class="back-link"><i class="fas fa-arrow-left"></i> Voltar aos Serviços</a>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-badge"><i class="fas fa-building-columns"></i><span>Serviço</span></div>
+    <h1>Capacitação<br>Institucional</h1>
+    <p class="lead">Treinamentos para equipes técnicas e educacionais em Justiça Restaurativa e proteção infantil. Prefeituras, escolas, órgãos públicos e comunidades no Brasil e nos EUA.</p>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a href="https://wa.me/18572434270?text=Olá%2C%20Levany!%20Tenho%20interesse%20em%20capacitação%20institucional." target="_blank" rel="noopener noreferrer" class="btn btn-orange">
+        <i class="fab fa-whatsapp"></i> Solicitar Proposta
+      </a>
+      <a href="index.html#contato" class="btn" style="background:rgba(255,255,255,0.08); color:#fff; border-color:rgba(255,255,255,0.3);">Ver outros serviços</a>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <div class="content-grid">
+      <div class="content-main">
+        <span class="eyebrow">SOBRE A CAPACITAÇÃO</span>
+        <h2>Transformação cultural que começa de dentro</h2>
+        <p>A capacitação institucional de Levany Rogge forma equipes inteiras para multiplicar as práticas restaurativas no seu dia a dia. Com mais de 30 anos de experiência, ela já capacitou equipes em prefeituras do Espírito Santo, órgãos públicos estaduais, escolas e comunidades imigrantes em Massachusetts, EUA.</p>
+        <p>O objetivo não é apenas um treinamento pontual — é capacitar profissionais para que se tornem multiplicadores, levando a Justiça Restaurativa e a cultura de proteção para toda a sua rede de atuação.</p>
+
+        <h3>Como funciona o processo</h3>
+        <div class="phases">
+          <div class="phase">
+            <div class="phase-dot">1</div>
+            <div class="phase-content">
+              <h4>Diagnóstico</h4>
+              <p>Levantamento da cultura atual, lacunas e necessidades específicas da instituição</p>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-dot">2</div>
+            <div class="phase-content">
+              <h4>Elaboração do protocolo</h4>
+              <p>Criação de um protocolo de proteção personalizado para a realidade da instituição</p>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-dot">3</div>
+            <div class="phase-content">
+              <h4>Formação de multiplicadores</h4>
+              <p>Capacitação aprofundada de líderes internos para disseminar a cultura de proteção</p>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-dot">4</div>
+            <div class="phase-content">
+              <h4>Treinamento da equipe</h4>
+              <p>Formação de toda a equipe com o Método REAP+, adaptado ao contexto institucional</p>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-dot">5</div>
+            <div class="phase-content">
+              <h4>Acompanhamento</h4>
+              <p>Suporte pós-implementação para garantir que o protocolo esteja sendo aplicado</p>
+            </div>
+          </div>
+        </div>
+
+        <h3>Clientes e parceiros reais</h3>
+        <ul class="check-list">
+          <li><i class="fas fa-check-circle"></i>Prefeituras de Vila Velha, Cariacica, Guarapari, Serra e Vitória (ES)</li>
+          <li><i class="fas fa-check-circle"></i>Escolas Adventistas do Norte Capixaba</li>
+          <li><i class="fas fa-check-circle"></i>EEEFM Alice Holzmeister</li>
+          <li><i class="fas fa-check-circle"></i>IASES — Instituto de Atendimento Socioeducativo do Espírito Santo</li>
+          <li><i class="fas fa-check-circle"></i>Guarda Municipal de Vila Velha</li>
+          <li><i class="fas fa-check-circle"></i>Comunidades imigrantes e religiosas em Massachusetts, EUA</li>
+        </ul>
+
+        <h3>O que está incluído</h3>
+        <ul class="check-list">
+          <li><i class="fas fa-check-circle"></i>Diagnóstico inicial detalhado da instituição e suas necessidades</li>
+          <li><i class="fas fa-check-circle"></i>Treinamento presencial e/ou online de toda a equipe</li>
+          <li><i class="fas fa-check-circle"></i>Formação de multiplicadores internos para disseminar as práticas</li>
+          <li><i class="fas fa-check-circle"></i>Certificados para todos os participantes</li>
+          <li><i class="fas fa-check-circle"></i>Relatório final de implementação</li>
+          <li><i class="fas fa-check-circle"></i>Canal de suporte pós-formação</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="sidebar-card">
+          <h4>Informações</h4>
+          <div class="sidebar-meta">
+            <div class="sidebar-meta-item"><i class="fas fa-clock"></i><span>Mínimo 40h customizadas</span></div>
+            <div class="sidebar-meta-item"><i class="fas fa-arrows-left-right"></i><span>Presencial e/ou online</span></div>
+            <div class="sidebar-meta-item"><i class="fas fa-users"></i><span>Equipe completa</span></div>
+            <div class="sidebar-meta-item"><i class="fas fa-map-marker-alt"></i><span>Todo o Brasil</span></div>
+            <div class="sidebar-meta-item"><i class="fas fa-certificate"></i><span>Certificados incluídos</span></div>
+            <div class="sidebar-meta-item"><i class="fas fa-file-alt"></i><span>Protocolo personalizado</span></div>
+          </div>
+        </div>
+        <div class="sidebar-cta">
+          <p>Vamos montar uma proposta personalizada para sua instituição?</p>
+          <a href="https://wa.me/18572434270?text=Olá%2C%20Levany!%20Tenho%20interesse%20em%20capacitação%20institucional." target="_blank" rel="noopener noreferrer" class="btn btn-orange">
+            <i class="fab fa-whatsapp"></i> Solicitar proposta
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="audience-section">
+  <div class="container">
+    <span class="eyebrow">PÚBLICO IDEAL</span>
+    <h2>Para quais instituições?</h2>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <i class="fas fa-landmark"></i>
+        <h3>Prefeituras e Órgãos Públicos</h3>
+        <p>Secretarias de educação e assistência social, guardas municipais e institutos socioeducativos — como já aconteceu em 5 municípios do ES e no IASES.</p>
+      </div>
+      <div class="audience-card">
+        <i class="fas fa-school"></i>
+        <h3>Escolas e Redes de Ensino</h3>
+        <p>Escolas públicas e privadas que querem implementar a Justiça Restaurativa e a cultura de proteção de forma estruturada para toda a equipe.</p>
+      </div>
+      <div class="audience-card">
+        <i class="fas fa-globe"></i>
+        <h3>Comunidades e Organizações Religiosas</h3>
+        <p>Grupos comunitários, igrejas e associações — inclusive no exterior, como as comunidades imigrantes em Massachusetts, EUA.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Leve a Justiça Restaurativa para a sua instituição</h2>
+    <p>Entre em contato para receber uma proposta customizada para o tamanho e perfil da sua equipe.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/18572434270?text=Olá%2C%20Levany!%20Tenho%20interesse%20em%20capacitação%20institucional." target="_blank" rel="noopener noreferrer" class="btn btn-orange">
+        <i class="fab fa-whatsapp"></i> Solicitar proposta
+      </a>
+      <a href="index.html#contato" class="btn" style="background:rgba(255,255,255,0.08); color:#fff; border-color:rgba(255,255,255,0.3);">Preencher formulário</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container"><div class="footer-bar"><span>© 2026 Levany Rogge · Proteção Infantil</span><a href="index.html">← Voltar ao site</a></div></div></footer>
+</body>
+</html>
