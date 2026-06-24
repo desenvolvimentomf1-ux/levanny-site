@@ -37,14 +37,14 @@
     .page-hero h1 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 16px; }
     .page-hero .lead { font-size: 1.0625rem; color: rgba(255,255,255,0.65); max-width: 560px; line-height: 1.7; margin-bottom: 32px; }
     .content-section { padding-block: 80px; }
-    .content-grid { display: grid; grid-template-columns: 1fr 340px; gap: 64px; align-items: start; }
+    .content-grid { display: grid; align-items: start; }
     .content-main h2 { font-family: var(--serif); font-size: 1.75rem; font-weight: 700; color: var(--navy); margin-bottom: 16px; }
     .content-main p { font-size: 0.9375rem; color: var(--text); line-height: 1.75; margin-bottom: 20px; }
     .content-main h3 { font-size: 1.125rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; margin-top: 32px; }
     .check-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
     .check-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text); line-height: 1.55; }
     .check-list li i { color: var(--orange); margin-top: 3px; flex-shrink: 0; }
-    .modules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
+    .modules-grid { display: grid; gap: 12px; margin-bottom: 32px; }
     .module-card { background: var(--light); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; }
     .module-num { font-size: 0.75rem; font-weight: 700; color: var(--orange); margin-bottom: 6px; }
     .module-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
@@ -63,7 +63,7 @@
     .sidebar-cta .btn { width: 100%; justify-content: center; }
     .audience-section { background: var(--orange-soft); padding-block: 64px; }
     .audience-section h2 { font-family: var(--serif); font-size: 1.75rem; font-weight: 700; color: var(--navy); margin-bottom: 32px; }
-    .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .audience-grid { display: grid; gap: 16px; }
     .audience-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
     .audience-card i { color: var(--orange); font-size: 1.25rem; margin-bottom: 10px; display: block; }
     .audience-card h3 { font-size: 0.9375rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
@@ -77,8 +77,20 @@
     .footer-bar span { font-size: 0.8125rem; color: rgba(255,255,255,0.35); }
     .footer-bar a { font-size: 0.8125rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
     .footer-bar a:hover { color: var(--orange); }
-    @media (max-width: 900px) { .content-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 768px) { .audience-grid { grid-template-columns: 1fr; } .modules-grid { grid-template-columns: 1fr; } }
+    /* Mobile-first: estilos base para telas pequenas */
+    .content-grid { grid-template-columns: 1fr; }
+    .modules-grid { grid-template-columns: 1fr; }
+    .audience-grid { grid-template-columns: 1fr; }
+
+    @media (min-width: 768px) {
+      .modules-grid { grid-template-columns: repeat(2, 1fr); }
+      .audience-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .content-grid { grid-template-columns: 1fr 340px; gap: 64px; }
+      .audience-grid { grid-template-columns: repeat(3, 1fr); }
+    }
   </style>
 </head>
 <body>
