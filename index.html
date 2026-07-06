@@ -124,9 +124,9 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', system-ui, sans-serif;
-      color: #1C2B3A;
-      background: #fff;
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background: var(--color-bg);
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
@@ -137,26 +137,29 @@
     /* ============ SKIP LINK ============ */
     .skip-link {
       position: absolute; left: -9999px; top: 16px;
-      background: #E8640A; color: #fff;
+      background: var(--color-accent); color: #fff;
       padding: 10px 20px; border-radius: 4px; font-weight: 600; z-index: 9999;
     }
     .skip-link:focus { left: 16px; }
-    :focus-visible { outline: 2px solid #E8640A; outline-offset: 3px; border-radius: 3px; }
+    :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; border-radius: 3px; }
 
     /* ============ VARIABLES ============ */
     :root {
-      --navy:        #0F2339;
-      --navy-mid:    #1A3A5C;
-      --orange:      #E8640A;
-      --orange-soft: #FFF3EA;
-      --orange-mid:  #F5935A;
-      --light:       #F7F9FC;
-      --border:      #DDE5EE;
-      --text:        #1C2B3A;
-      --muted:       #5A7080;
-      --white:       #FFFFFF;
+      --color-primary:      #123A63; /* Azul Institucional */
+      --color-secondary:    #4E7FBF; /* Azul Médio */
+      --color-accent:       #2D6A6A; /* Verde Petróleo — CTA */
+      --color-accent-dark:  #234F4F; /* hover do CTA */
+      --color-primary-soft: #EAF1F8; /* fundo suave p/ ícones e selos */
+      --color-bg:           #FFFFFF;
+      --color-bg-alt:       #F5F7FA;
+      --color-border:       #DCE3EA;
+      --color-text:         #2F3742;
+      --color-muted:        #5C6B7A;
       --font-serif:  'Playfair Display', Georgia, serif;
       --font-sans:   'Inter', system-ui, sans-serif;
+      --radius-card:       16px;
+      --shadow-card:       0 2px 16px rgba(18,58,99,0.06);
+      --shadow-card-hover: 0 16px 36px rgba(18,58,99,0.14);
     }
 
     /* ============ LAYOUT ============ */
@@ -174,7 +177,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--color-secondary);
       margin-bottom: 12px;
     }
 
@@ -192,29 +195,25 @@
       transition: all 0.2s ease;
       white-space: nowrap;
     }
-    .btn-orange {
-      background: var(--orange); color: #fff; border-color: var(--orange);
+    .btn-primary {
+      background: var(--color-accent); color: #fff; border-color: var(--color-accent);
     }
-    .btn-orange:hover { background: #CC5508; border-color: #CC5508; transform: translateY(-1px); }
-    .btn-outline-white {
+    .btn-primary:hover { background: var(--color-accent-dark); border-color: var(--color-accent-dark); transform: translateY(-1px); }
+    .btn-secondary-dark {
       background: transparent; color: #fff; border-color: rgba(255,255,255,0.55);
     }
-    .btn-outline-white:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
-    .btn-outline-navy {
-      background: transparent; color: var(--navy-mid); border-color: var(--navy-mid);
+    .btn-secondary-dark:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+    .btn-secondary {
+      background: #fff; color: var(--color-primary); border-color: var(--color-primary);
     }
-    .btn-outline-navy:hover { background: var(--navy-mid); color: #fff; }
-    .btn-outline-orange {
-      background: transparent; color: var(--orange); border-color: var(--orange);
-    }
-    .btn-outline-orange:hover { background: var(--orange); color: #fff; }
+    .btn-secondary:hover { background: var(--color-primary); color: #fff; }
 
     /* "SAIBA MAIS →" link */
     .link-arrow {
       display: inline-flex; align-items: center; gap: 6px;
       font-size: 0.8125rem; font-weight: 700;
       letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--orange);
+      color: var(--color-accent);
       transition: gap 0.2s ease;
       margin-top: auto;
     }
@@ -243,10 +242,10 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       transition: background 0.3s ease, box-shadow 0.3s ease;
     }
-    #site-header.transparent { background: var(--navy); }
+    #site-header.transparent { background: var(--color-primary); }
     #site-header.scrolled {
-      background: var(--navy);
-      box-shadow: 0 2px 12px rgba(15,35,57,0.35);
+      background: var(--color-primary);
+      box-shadow: 0 2px 12px rgba(18,58,99,0.35);
     }
     .header-inner {
       display: flex; align-items: center; justify-content: space-between;
@@ -259,7 +258,7 @@
     }
     .logo-initials {
       width: 38px; height: 38px;
-      background: var(--orange);
+      background: var(--color-accent);
       border-radius: 4px;
       display: flex; align-items: center; justify-content: center;
       font-family: var(--font-serif);
@@ -282,7 +281,7 @@
     /* Nav — mobile-first: esconde links, mostra hamburguer */
     .header-nav {
       display: none; position: fixed;
-      inset: 0; background: var(--navy);
+      inset: 0; background: var(--color-primary);
       flex-direction: column; justify-content: center; align-items: center;
       gap: 32px; z-index: 199;
     }
@@ -293,7 +292,7 @@
       color: rgba(255,255,255,0.85);
       transition: color 0.2s ease;
     }
-    .nav-link:hover { color: var(--orange); }
+    .nav-link:hover { color: var(--color-accent); }
 
     /* Hamburger — visível no mobile por padrão */
     .hamburger {
@@ -310,7 +309,7 @@
     ============================================================ */
     /* HERO — mobile-first */
     #inicio {
-      background: var(--navy);
+      background: var(--color-primary);
       min-height: 100svh;
       display: flex; align-items: center;
       padding-top: 80px; padding-bottom: 0;
@@ -331,13 +330,24 @@
     .hero-eyebrow {
       font-size: 0.6875rem; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--orange); margin-bottom: 20px;
+      color: var(--color-secondary); margin-bottom: 20px;
     }
     .hero-title {
       font-family: var(--font-serif);
       font-size: 2rem;
       font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
-      color: #fff; margin-bottom: 20px;
+      color: #fff; margin-bottom: 14px;
+    }
+    .hero-subtitle {
+      font-size: 1rem; font-weight: 600; line-height: 1.45;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 22px; max-width: 460px;
+    }
+    .hero-impact {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1.1875rem; font-weight: 700; line-height: 1.4;
+      color: var(--color-secondary);
+      margin-bottom: 22px; max-width: 460px;
     }
     .hero-sub {
       font-size: 0.9375rem; line-height: 1.7;
@@ -347,19 +357,19 @@
     .hero-btns { display: flex; gap: 10px; flex-direction: column; flex-wrap: wrap; }
     .hero-btns .btn { width: 100%; justify-content: center; }
 
-    /* Maio Laranja badge */
-    .maio-badge {
-      display: inline-flex; align-items: center; gap: 10px;
+    /* Selo de credibilidade */
+    .hero-selo {
+      display: inline-flex; align-items: flex-start; gap: 10px;
       margin-top: 36px;
     }
-    .maio-ribbon {
-      width: 28px; height: 28px;
-      background: var(--orange); border-radius: 50%;
+    .hero-selo-icon {
+      width: 28px; height: 28px; flex-shrink: 0;
+      background: var(--color-accent); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
     }
-    .maio-ribbon i { font-size: 0.75rem; color: #fff; }
-    .maio-text { font-size: 0.75rem; color: rgba(255,255,255,0.55); line-height: 1.4; }
-    .maio-text strong { display: block; color: rgba(255,255,255,0.8); font-weight: 600; font-size: 0.8125rem; }
+    .hero-selo-icon i { font-size: 0.75rem; color: #fff; }
+    .hero-selo-text { font-size: 0.75rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
 
     /* Hero image — oculta no mobile, aparece no tablet+ */
     .hero-right {
@@ -372,33 +382,25 @@
       height: 100%;
       min-height: 560px;
       display: flex; align-items: center; justify-content: center;
+      padding: 22px;
+      border-radius: 28px;
+      background: linear-gradient(160deg, #ffffff 0%, #eef4fb 55%, #dfe8f4 100%);
+      box-shadow: 0 32px 72px rgba(0,0,0,0.32);
     }
     .hero-photo {
       width: 100%; height: 100%;
-      min-height: 560px;
+      min-height: 516px;
       object-fit: cover;
       object-position: center top;
       display: block;
-      border-radius: 4px;
-      /* Esmaecer bordas para fundir com o fundo navy */
-      -webkit-mask-image:
-        radial-gradient(ellipse 88% 92% at 62% 48%,
-          black 30%,
-          rgba(0,0,0,0.85) 52%,
-          rgba(0,0,0,0.4) 72%,
-          transparent 100%);
-      mask-image:
-        radial-gradient(ellipse 88% 92% at 62% 48%,
-          black 30%,
-          rgba(0,0,0,0.85) 52%,
-          rgba(0,0,0,0.4) 72%,
-          transparent 100%);
+      border-radius: 18px;
+      box-shadow: 0 10px 28px rgba(18,58,99,0.18);
     }
     .hero-photo-placeholder {
-      width: 100%; min-height: 560px;
+      width: 100%; min-height: 516px;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      gap: 16px; color: rgba(255,255,255,0.2);
+      gap: 16px; color: rgba(18,58,99,0.25);
       font-size: 0.875rem; text-align: center;
     }
     .hero-photo-placeholder i { font-size: 3rem; }
@@ -408,7 +410,7 @@
     ============================================================ */
     #features {
       background: #fff;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--color-border);
       padding-block: 28px;
     }
     .features-grid {
@@ -422,22 +424,22 @@
     .feature-icon {
       width: 40px; height: 40px; flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
-      color: var(--orange); font-size: 1.125rem;
+      color: var(--color-accent); font-size: 1.125rem;
     }
     .feature-label {
       font-size: 0.8125rem; font-weight: 600;
-      color: var(--text); line-height: 1.3;
+      color: var(--color-text); line-height: 1.3;
     }
     .feature-desc {
-      font-size: 0.75rem; color: var(--muted); line-height: 1.4; margin-top: 2px;
+      font-size: 0.75rem; color: var(--color-muted); line-height: 1.4; margin-top: 2px;
     }
 
     /* ============================================================
        PARA QUEM É
     ============================================================ */
     #para-quem {
-      background: var(--orange-soft);
-      padding-block: 80px;
+      background: var(--color-bg-alt);
+      padding-block: 96px;
     }
     .pq-grid {
       display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;
@@ -446,76 +448,86 @@
       font-family: var(--font-serif);
       font-size: clamp(1.875rem, 3vw, 2.5rem);
       font-weight: 700; line-height: 1.15;
-      color: var(--navy); margin-bottom: 16px;
+      color: var(--color-primary); margin-bottom: 16px;
     }
     .pq-left p {
-      font-size: 0.9375rem; color: var(--muted); line-height: 1.7; margin-bottom: 28px;
+      font-size: 0.9375rem; color: var(--color-muted); line-height: 1.7; margin-bottom: 28px;
     }
     .pq-cards {
-      display: grid; grid-template-columns: 1fr; gap: 16px;
+      display: grid; grid-template-columns: 1fr; gap: 22px;
     }
     .pq-card {
-      background: #fff; border-radius: 10px;
-      border: 1px solid rgba(221,229,238,0.7);
-      padding: 24px 20px;
-      box-shadow: 0 2px 12px rgba(15,35,57,0.05);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background: #fff; border-radius: var(--radius-card);
+      border: 1px solid var(--color-border);
+      padding: 32px 26px;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .pq-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(15,35,57,0.1); }
+    .pq-card:hover { transform: translateY(-4px) scale(1.01); box-shadow: var(--shadow-card-hover); }
     .pq-card-icon {
-      width: 44px; height: 44px; margin-bottom: 14px;
+      width: 44px; height: 44px; margin-bottom: 16px;
       display: flex; align-items: center; justify-content: center;
-      background: var(--orange-soft); border-radius: 10px;
-      color: var(--orange); font-size: 1.125rem;
+      background: var(--color-primary-soft); border-radius: 10px;
+      color: var(--color-primary); font-size: 1.125rem;
     }
     .pq-card h3 {
       font-size: 0.9375rem; font-weight: 700;
-      color: var(--navy); margin-bottom: 6px; line-height: 1.3;
+      color: var(--color-primary); margin-bottom: 6px; line-height: 1.3;
     }
-    .pq-card p { font-size: 0.8125rem; color: var(--muted); line-height: 1.55; }
+    .pq-card p { font-size: 0.8125rem; color: var(--color-muted); line-height: 1.55; }
 
     /* ============================================================
        SERVIÇOS
     ============================================================ */
     #servicos {
-      background: #fff; padding-block: 80px;
+      background: #fff; padding-block: 96px;
     }
     .servicos-header { text-align: center; margin-bottom: 52px; }
     .servicos-header h2 {
       font-family: var(--font-serif);
       font-size: clamp(1.875rem, 3vw, 2.5rem);
-      font-weight: 700; color: var(--navy);
+      font-weight: 700; color: var(--color-primary);
     }
+    .servicos-sub {
+      font-size: 1rem; font-weight: 600; color: var(--color-secondary);
+      margin-top: 12px;
+    }
+    .servicos-intro {
+      font-size: 0.9375rem; color: var(--color-muted); line-height: 1.7;
+      max-width: 620px; margin: 14px auto 0;
+    }
+    .servicos-cta { text-align: center; margin-top: 44px; }
     .servicos-grid {
-      display: grid; grid-template-columns: 1fr; gap: 20px;
+      display: grid; grid-template-columns: 1fr; gap: 24px;
     }
     .servico-card {
-      padding: 28px 20px;
-      border: 1px solid var(--border); border-radius: 10px;
+      padding: 34px 26px;
+      border: 1px solid var(--color-border); border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
       display: flex; flex-direction: column; gap: 0;
-      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
     .servico-card:hover {
-      box-shadow: 0 8px 28px rgba(15,35,57,0.1);
-      transform: translateY(-3px);
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-4px) scale(1.01);
     }
     .servico-icon {
-      font-size: 1.375rem; color: var(--navy-mid);
+      font-size: 1.375rem; color: var(--color-primary);
       margin-bottom: 16px;
     }
     .servico-card h3 {
       font-size: 0.9375rem; font-weight: 700;
-      color: var(--navy); line-height: 1.3; margin-bottom: 10px;
+      color: var(--color-primary); line-height: 1.3; margin-bottom: 10px;
     }
     .servico-card p {
-      font-size: 0.8125rem; color: var(--muted); line-height: 1.6; flex: 1; margin-bottom: 20px;
+      font-size: 0.8125rem; color: var(--color-muted); line-height: 1.6; flex: 1; margin-bottom: 20px;
     }
 
     /* ============================================================
        MÉTODO REAP+
     ============================================================ */
     #metodo {
-      background: var(--light); padding-block: 80px;
+      background: var(--color-bg-alt); padding-block: 96px;
     }
     .metodo-grid {
       display: grid; grid-template-columns: 1fr; gap: 40px; align-items: start;
@@ -523,15 +535,15 @@
     .metodo-left h2 {
       font-family: var(--font-serif);
       font-size: clamp(1.875rem, 3vw, 2.5rem);
-      font-weight: 700; color: var(--navy);
+      font-weight: 700; color: var(--color-primary);
       margin-bottom: 16px; line-height: 1.2;
     }
     .metodo-divider {
-      width: 48px; height: 3px; background: var(--orange);
+      width: 48px; height: 3px; background: var(--color-accent);
       border-radius: 2px; margin-bottom: 20px;
     }
     .metodo-left p {
-      font-size: 0.9375rem; color: var(--muted); line-height: 1.7; margin-bottom: 28px;
+      font-size: 0.9375rem; color: var(--color-muted); line-height: 1.7; margin-bottom: 28px;
     }
 
     /* REAP+ rows */
@@ -542,31 +554,33 @@
       gap: 0 24px;
       align-items: start;
       padding-block: 24px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--color-border);
     }
     .reap-row:last-child { border-bottom: none; }
     .reap-row-letter {
       font-family: var(--font-serif);
       font-size: 3.75rem; font-weight: 900; line-height: 1;
-      color: var(--orange); letter-spacing: -0.02em;
+      color: var(--color-accent); letter-spacing: -0.02em;
       padding-top: 4px;
+      display: inline-flex; align-items: center; gap: 6px;
     }
-    .reap-row-letter.dark { color: var(--navy); }
-    .reap-row-divider { width: 1px; background: var(--border); align-self: stretch; }
+    .reap-row-emoji { font-size: 1.25rem; }
+    .reap-row-letter.dark { color: var(--color-primary); }
+    .reap-row-divider { width: 1px; background: var(--color-border); align-self: stretch; }
     .reap-row-content { padding-left: 4px; }
     .reap-row-title {
-      font-size: 1rem; font-weight: 700; color: var(--navy);
+      font-size: 1rem; font-weight: 700; color: var(--color-primary);
       margin-bottom: 4px;
     }
     .reap-row-desc {
-      font-size: 0.875rem; color: var(--muted); line-height: 1.6;
+      font-size: 0.875rem; color: var(--color-muted); line-height: 1.6;
     }
 
     /* ============================================================
        DEPOIMENTOS
     ============================================================ */
     #depoimentos {
-      background: var(--navy); padding-block: 80px;
+      background: var(--color-primary); padding-block: 96px;
     }
     .depo-header { text-align: center; margin-bottom: 52px; }
     .depo-header h2 {
@@ -596,7 +610,7 @@
     .depo-avatar {
       position: relative;
       width: 64px; height: 64px; border-radius: 50%;
-      background: rgba(232,100,10,0.18);
+      background: rgba(78,127,191,0.18);
       border: 2px solid rgba(255,255,255,0.14);
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 20px;
@@ -606,7 +620,7 @@
     .depo-avatar-badge {
       position: absolute; top: -8px; left: -8px;
       width: 26px; height: 26px;
-      background: var(--orange); border-radius: 50%;
+      background: var(--color-secondary); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-size: 0.85rem; color: #fff; font-weight: 900;
       line-height: 1;
@@ -615,7 +629,7 @@
     .depo-role {
       font-size: 0.6875rem; font-weight: 700;
       letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--orange); margin-bottom: 22px;
+      color: var(--color-secondary); margin-bottom: 22px;
     }
     .depo-text {
       font-size: 0.9375rem; color: rgba(255,255,255,0.72);
@@ -632,8 +646,8 @@
       cursor: pointer; transition: all 0.2s ease; z-index: 10;
     }
     .depo-arrow:hover {
-      background: rgba(232,100,10,0.25);
-      border-color: var(--orange); color: #fff;
+      background: rgba(45,106,106,0.25);
+      border-color: var(--color-accent); color: #fff;
     }
     .depo-arrow-prev { left: 0; }
     .depo-arrow-next { right: 0; }
@@ -649,69 +663,60 @@
       cursor: pointer; transition: all 0.2s ease;
       padding: 0;
     }
-    .depo-dot.active { background: var(--orange); border-color: var(--orange); }
+    .depo-dot.active { background: var(--color-accent); border-color: var(--color-accent); }
     /* (carousel mobile já definido no base acima) */
 
     /* ============================================================
        CTA BAR
     ============================================================ */
     #cta-bar {
-      background: #fff; border-top: 1px solid var(--border);
-      padding-block: 48px;
+      background: #fff; border-top: 1px solid var(--color-border);
+      padding-block: 64px;
     }
-    .cta-inner {
-      display: flex; align-items: center; gap: 32px;
-      justify-content: space-between;
-      flex-direction: column; text-align: center;
+    .cta-impact-wrap {
+      max-width: 720px; margin-inline: auto; text-align: center;
     }
-    .cta-right { align-items: center; }
-    .cta-icon-wrap {
-      width: 64px; height: 64px; flex-shrink: 0;
-      background: var(--orange); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; color: #fff;
+    .cta-impact-icon {
+      color: var(--color-secondary); font-size: 1.5rem; margin-bottom: 16px;
+      opacity: 0.7;
     }
-    .cta-text h3 {
-      font-family: var(--font-serif);
-      font-size: 1.5rem; font-weight: 700;
-      color: var(--navy); line-height: 1.25; margin-bottom: 6px;
+    .cta-impact-text {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: clamp(1.375rem, 2.6vw, 1.875rem); font-weight: 700;
+      color: var(--color-primary); line-height: 1.4;
     }
-    .cta-text p { font-size: 0.9rem; color: var(--muted); line-height: 1.55; }
-    .cta-right { display: flex; flex-direction: column; align-items: center; gap: 10px; flex-shrink: 0; }
-    .cta-security {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 0.75rem; color: var(--muted);
-    }
-    .cta-security i { color: var(--orange); font-size: 0.875rem; }
 
     /* ============================================================
        CONTATO FORM (modal-like section)
     ============================================================ */
-    #contato { background: var(--light); padding-block: 80px; }
+    #contato { background: var(--color-bg-alt); padding-block: 96px; }
     .contato-wrap { max-width: 660px; margin-inline: auto; text-align: center; }
     .contato-wrap h2 {
       font-family: var(--font-serif);
       font-size: clamp(1.75rem, 3vw, 2.25rem);
-      font-weight: 700; color: var(--navy);
+      font-weight: 700; color: var(--color-primary);
       margin-bottom: 12px;
     }
-    .contato-wrap .sub { font-size: 0.9375rem; color: var(--muted); margin-bottom: 40px; line-height: 1.65; }
-    .form-row { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px; }
+    .contato-wrap .sub { font-size: 0.9375rem; color: var(--color-muted); margin-bottom: 40px; line-height: 1.65; }
+    .form-row { display: grid; grid-template-columns: 1fr; gap: 22px; margin-bottom: 16px; }
     .form-group { display: flex; flex-direction: column; gap: 6px; text-align: left; }
-    .form-group label { font-size: 0.8125rem; font-weight: 600; color: var(--text); }
+    .form-group label { font-size: 0.8125rem; font-weight: 600; color: var(--color-text); }
     .form-group input,
-    .form-group select {
+    .form-group select,
+    .form-group textarea {
       padding: 13px 16px;
-      border: 1.5px solid var(--border); border-radius: 7px;
+      border: 1.5px solid var(--color-border); border-radius: 7px;
       font-family: var(--font-sans); font-size: 0.9rem;
-      color: var(--text); background: #fff;
+      color: var(--color-text); background: #fff;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
       appearance: none;
+      resize: vertical;
     }
     .form-group input:focus,
-    .form-group select:focus {
-      border-color: var(--orange);
-      box-shadow: 0 0 0 3px rgba(232,100,10,0.12);
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(45,106,106,0.12);
       outline: none;
     }
     .form-group input.err, .form-group select.err { border-color: #e53e3e; }
@@ -720,12 +725,17 @@
     .form-full { grid-column: 1 / -1; }
     .form-submit-row { margin-top: 20px; }
     .form-submit-row .btn { width: 100%; justify-content: center; padding: 15px 28px; font-size: 0.9375rem; }
+    .form-note { margin-top: 12px; font-size: 0.8125rem; color: var(--color-muted); text-align: center; }
+    .form-footer-tags {
+      margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--color-border);
+      font-size: 0.75rem; color: var(--color-muted); text-align: center; letter-spacing: 0.02em;
+    }
 
     /* ============================================================
        FOOTER
     ============================================================ */
     footer {
-      background: var(--navy); padding-block: 64px 0;
+      background: var(--color-primary); padding-block: 80px 0;
     }
     .footer-grid {
       display: grid;
@@ -733,7 +743,12 @@
       gap: 32px; padding-bottom: 48px;
     }
     .footer-logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-    .footer-desc { font-size: 0.8125rem; color: rgba(255,255,255,0.5); line-height: 1.65; margin-bottom: 20px; }
+    .footer-desc { font-size: 0.8125rem; color: rgba(255,255,255,0.5); line-height: 1.65; margin-bottom: 14px; }
+    .footer-institutional {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 0.875rem; color: rgba(255,255,255,0.7);
+      line-height: 1.6; margin-bottom: 20px;
+    }
     .footer-social { display: flex; gap: 10px; }
     .social-icon {
       width: 34px; height: 34px; border-radius: 6px;
@@ -742,11 +757,11 @@
       color: rgba(255,255,255,0.55); font-size: 0.875rem;
       transition: all 0.2s ease;
     }
-    .social-icon:hover { border-color: var(--orange); color: var(--orange); }
+    .social-icon:hover { border-color: var(--color-accent); color: var(--color-accent); }
     .footer-col-title {
       font-size: 0.6875rem; font-weight: 700;
       letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--orange); margin-bottom: 18px;
+      color: var(--color-secondary); margin-bottom: 18px;
     }
     .footer-links { display: flex; flex-direction: column; gap: 10px; }
     .footer-link { font-size: 0.8125rem; color: rgba(255,255,255,0.55); transition: color 0.2s ease; }
@@ -756,13 +771,13 @@
       display: flex; align-items: flex-start; gap: 10px;
       font-size: 0.8125rem; color: rgba(255,255,255,0.55);
     }
-    .footer-contact-item i { color: var(--orange); margin-top: 2px; flex-shrink: 0; }
+    .footer-contact-item i { color: var(--color-secondary); margin-top: 2px; flex-shrink: 0; }
     .footer-contact-item a { color: rgba(255,255,255,0.55); transition: color 0.2s ease; }
     .footer-contact-item a:hover { color: rgba(255,255,255,0.9); }
     .footer-legal-box {
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 8px; padding: 16px;
+      border-radius: 12px; padding: 18px;
     }
     .footer-legal-title {
       font-size: 0.75rem; font-weight: 700;
@@ -850,7 +865,7 @@
 
     /* Large Desktop: 1280px+ */
     @media (min-width: 1280px) {
-      .servicos-grid { grid-template-columns: repeat(5, 1fr); }
+      .servicos-grid { grid-template-columns: repeat(3, 1fr); }
       .metodo-grid { grid-template-columns: 380px 1fr; gap: 80px; }
       .footer-grid { grid-template-columns: 2fr 1fr 1.2fr 1.4fr; }
     }
@@ -861,7 +876,7 @@
     #sobre-levany {
       background: #fff;
       padding-block: 96px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--color-border);
     }
     .sobre-grid {
       display: grid;
@@ -880,14 +895,14 @@
       object-fit: cover;
       object-position: center 20%;
       border-radius: 16px;
-      box-shadow: 0 24px 64px rgba(15,35,57,0.18);
+      box-shadow: 0 24px 64px rgba(18,58,99,0.18);
       display: block;
       max-height: 340px;
     }
     .sobre-foto-badge {
       margin-top: 20px;
-      background: var(--orange-soft);
-      border: 1px solid rgba(232,100,10,0.2);
+      background: var(--color-primary-soft);
+      border: 1px solid rgba(18,58,99,0.15);
       border-radius: 10px;
       padding: 14px 18px;
       display: flex;
@@ -895,39 +910,39 @@
       gap: 12px;
     }
     .sobre-foto-badge i {
-      color: var(--orange);
+      color: var(--color-primary);
       font-size: 1.25rem;
       flex-shrink: 0;
     }
     .sobre-foto-badge-text {
       font-size: 0.8125rem;
-      color: var(--text);
+      color: var(--color-text);
       line-height: 1.4;
     }
     .sobre-foto-badge-text strong {
       display: block;
       font-weight: 700;
-      color: var(--navy);
+      color: var(--color-primary);
       margin-bottom: 2px;
     }
     .sobre-content h2 {
       font-family: var(--font-serif);
       font-size: clamp(1.875rem, 3vw, 2.625rem);
       font-weight: 700;
-      color: var(--navy);
+      color: var(--color-primary);
       line-height: 1.15;
       margin-bottom: 6px;
     }
     .sobre-subtitle {
       font-size: 0.9375rem;
-      color: var(--orange);
+      color: var(--color-secondary);
       font-weight: 600;
       margin-bottom: 24px;
       line-height: 1.5;
     }
     .sobre-bio {
       font-size: 0.9375rem;
-      color: var(--muted);
+      color: var(--color-muted);
       line-height: 1.8;
       margin-bottom: 32px;
     }
@@ -939,23 +954,26 @@
       margin-bottom: 36px;
     }
     .sobre-stat {
-      background: var(--light);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 18px 16px;
+      background: var(--color-bg-alt);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      padding: 22px 18px;
       text-align: center;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    .sobre-stat:hover { transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
     .sobre-stat-num {
       font-family: var(--font-serif);
       font-size: 1.875rem;
       font-weight: 700;
-      color: var(--orange);
+      color: var(--color-primary);
       line-height: 1;
       margin-bottom: 6px;
     }
     .sobre-stat-label {
       font-size: 0.75rem;
-      color: var(--muted);
+      color: var(--color-muted);
       line-height: 1.35;
       font-weight: 500;
     }
@@ -964,7 +982,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--color-accent);
       margin-bottom: 14px;
       display: block;
     }
@@ -979,17 +997,17 @@
       align-items: flex-start;
       gap: 10px;
       font-size: 0.875rem;
-      color: var(--text);
+      color: var(--color-text);
       line-height: 1.5;
     }
     .sobre-cert-item i {
-      color: var(--orange);
+      color: var(--color-primary);
       margin-top: 3px;
       flex-shrink: 0;
       font-size: 0.75rem;
     }
     .sobre-intl {
-      background: var(--navy);
+      background: var(--color-primary);
       border-radius: 10px;
       padding: 20px 22px;
       display: flex;
@@ -998,7 +1016,7 @@
       margin-bottom: 28px;
     }
     .sobre-intl i {
-      color: var(--orange);
+      color: var(--color-accent);
       font-size: 1.25rem;
       flex-shrink: 0;
       margin-top: 2px;
@@ -1034,7 +1052,7 @@
        SERVIÇO CARD — clicável
     ============================================================ */
     .servico-card { cursor: pointer; }
-    .servico-card:focus-visible { outline: 2px solid var(--orange); outline-offset: 4px; }
+    .servico-card:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
 
     /* ============================================================
        MODAL
@@ -1042,7 +1060,7 @@
     /* Modal — mobile-first: full-screen bottom sheet */
     .svc-overlay {
       position: fixed; inset: 0; z-index: 600;
-      background: rgba(15,35,57,0.55);
+      background: rgba(18,58,99,0.55);
       backdrop-filter: blur(6px);
       display: flex; align-items: flex-end; justify-content: center;
       padding: 0;
@@ -1059,54 +1077,54 @@
       position: relative;
       transform: translateY(100%);
       transition: transform 0.35s cubic-bezier(0.32,0.72,0,1);
-      box-shadow: 0 32px 80px rgba(15,35,57,0.25);
+      box-shadow: 0 32px 80px rgba(18,58,99,0.25);
     }
     .svc-overlay.open .svc-modal { transform: translateY(0); }
 
     /* Modal head — padding mobile */
     .svc-modal-head {
       padding: 28px 24px 20px;
-      border-bottom: 1px solid #DDE5EE;
+      border-bottom: 1px solid var(--color-border);
       display: flex; align-items: flex-start; gap: 20px;
     }
     .svc-modal-icon-box {
       width: 56px; height: 56px; flex-shrink: 0;
-      background: #FFF3EA; border-radius: 12px;
+      background: var(--color-primary-soft); border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.375rem; color: #E8640A;
+      font-size: 1.375rem; color: var(--color-accent);
     }
     .svc-modal-head-text { flex: 1; }
     .svc-modal-tag {
       font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: #E8640A; margin-bottom: 4px;
+      text-transform: uppercase; color: var(--color-accent); margin-bottom: 4px;
       display: block;
     }
     .svc-modal-title {
       font-family: 'Playfair Display', serif;
       font-size: 1.5rem; font-weight: 700;
-      color: #0F2339; line-height: 1.2;
+      color: var(--color-primary); line-height: 1.2;
     }
     .svc-modal-subtitle {
-      font-size: 0.875rem; color: #5A7080; margin-top: 4px;
+      font-size: 0.875rem; color: var(--color-muted); margin-top: 4px;
     }
     .svc-modal-close {
       position: absolute; top: 16px; right: 16px;
       width: 36px; height: 36px; border-radius: 50%;
-      background: #F7F9FC; border: 1px solid #DDE5EE;
+      background: var(--color-bg-alt); border: 1px solid var(--color-border);
       cursor: pointer; display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; color: #5A7080;
+      font-size: 1rem; color: var(--color-muted);
       transition: background 0.2s ease, color 0.2s ease;
     }
-    .svc-modal-close:hover { background: #E8640A; color: #fff; border-color: #E8640A; }
+    .svc-modal-close:hover { background: var(--color-accent); color: #fff; border-color: var(--color-accent); }
 
     .svc-modal-body { padding: 24px; }
     .svc-modal-desc {
-      font-size: 0.9375rem; color: #1C2B3A; line-height: 1.75;
+      font-size: 0.9375rem; color: var(--color-text); line-height: 1.75;
       margin-bottom: 24px;
     }
     .svc-modal-section-label {
       font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: #5A7080;
+      text-transform: uppercase; color: var(--color-muted);
       margin-bottom: 12px; display: block;
     }
     .svc-modal-list {
@@ -1115,12 +1133,12 @@
     }
     .svc-modal-list li {
       display: flex; align-items: flex-start; gap: 10px;
-      font-size: 0.875rem; color: #1C2B3A; line-height: 1.55;
+      font-size: 0.875rem; color: var(--color-text); line-height: 1.55;
     }
     .svc-modal-list li::before {
       content: '';
       width: 7px; height: 7px; flex-shrink: 0;
-      background: #E8640A; border-radius: 50%;
+      background: var(--color-accent); border-radius: 50%;
       margin-top: 6px;
     }
     .svc-modal-meta {
@@ -1130,15 +1148,15 @@
     .svc-modal-badge {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 5px 12px; border-radius: 20px;
-      background: #F7F9FC; border: 1px solid #DDE5EE;
-      font-size: 0.75rem; font-weight: 600; color: #1A3A5C;
+      background: var(--color-bg-alt); border: 1px solid var(--color-border);
+      font-size: 0.75rem; font-weight: 600; color: var(--color-secondary);
     }
-    .svc-modal-badge i { color: #E8640A; font-size: 0.75rem; }
+    .svc-modal-badge i { color: var(--color-accent); font-size: 0.75rem; }
 
     .svc-modal-footer {
       padding: 16px 24px 28px;
       display: flex; gap: 12px; flex-wrap: wrap; flex-direction: column;
-      border-top: 1px solid #DDE5EE;
+      border-top: 1px solid var(--color-border);
     }
     .svc-modal-footer .btn { flex: none; justify-content: center; font-size: 0.875rem; }
 
@@ -1173,7 +1191,7 @@
         <div class="logo-initials">LR</div>
         <div class="logo-text">
           <span class="logo-name">Levany Rogge</span>
-          <span class="logo-sub">Proteção Estratégica</span>
+          <span class="logo-sub">Educação e Prevenção</span>
         </div>
       </a>
       <nav class="header-nav" id="header-nav" aria-label="Navegação principal">
@@ -1181,11 +1199,11 @@
           <li><a href="#inicio" class="nav-link">Início</a></li>
           <li><a href="#sobre-levany" class="nav-link">Sobre</a></li>
           <li><a href="#metodo" class="nav-link">Método REAP+</a></li>
-          <li><a href="#servicos" class="nav-link">Serviços</a></li>
+          <li><a href="#servicos" class="nav-link">Áreas de Atuação</a></li>
           <li><a href="#para-quem" class="nav-link">Para Quem É</a></li>
           <li><a href="#contato" class="nav-link">Contato</a></li>
         </ul>
-        <a href="#contato" class="btn btn-orange" style="font-size:0.8125rem; padding:10px 20px;">Falar com a Especialista</a>
+        <a href="#contato" class="btn btn-primary" style="font-size:0.8125rem; padding:10px 20px;">Falar com a Especialista</a>
       </nav>
       <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="header-nav">
         <span class="hb"></span><span class="hb"></span><span class="hb"></span>
@@ -1203,37 +1221,35 @@
   <div class="container" style="padding: 0 24px;">
     <div class="hero-grid">
       <div class="hero-left">
-        <span class="hero-eyebrow">Proteção Infantil Estratégica</span>
-        <h1 class="hero-title">Proteção que<br>transforma<br>realidades.</h1>
-        <p class="hero-sub">Acolhimento, método e resultados para profissionais, famílias e instituições que querem proteger crianças de verdade.</p>
+        <h1 class="hero-title">Levany Rogge</h1>
+        <p class="hero-subtitle">Especialista em Educação Sexual, Emocional e Prevenção ao Abuso Sexual</p>
+        <p class="hero-impact">Educação que previne. Conhecimento que protege.</p>
+        <p class="hero-sub">Capacito escolas, profissionais, instituições e famílias para prevenir o abuso sexual, fortalecer a educação emocional e promover ambientes mais seguros para crianças e adolescentes.</p>
         <div class="hero-btns">
-          <a href="#contato" class="btn btn-orange">
+          <a href="#contato" class="btn btn-primary">
             <i class="fas fa-comments"></i> Falar com a Especialista
           </a>
-          <a href="#metodo" class="btn btn-outline-white">
-            <i class="fas fa-search"></i> Tire suas Dúvidas
+          <a href="#metodo" class="btn btn-secondary-dark">
+            <i class="fas fa-shapes"></i> Conheça o Método REAP+
           </a>
         </div>
-        <div class="maio-badge">
-          <div class="maio-ribbon"><i class="fas fa-ribbon"></i></div>
-          <div class="maio-text">
-            <strong>Maio Laranja</strong>
-            Todos juntos na proteção de crianças e adolescentes.
-          </div>
+        <div class="hero-selo">
+          <div class="hero-selo-icon"><i class="fas fa-award"></i></div>
+          <div class="hero-selo-text">+30 anos de experiência &bull; Atuação nacional e internacional &bull; Formação de profissionais e instituições</div>
         </div>
       </div>
       <div class="hero-right">
         <div class="hero-photo-wrap">
           <img
-            src="foto-hero.jpg"
-            alt="Adulto e criança de mãos dadas — proteção infantil"
+            src="LevanyRogge.jpeg"
+            alt="Levany Rogge — Especialista em Educação Sexual, Emocional e Prevenção ao Abuso Sexual"
             class="hero-photo"
             loading="eager"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
           >
           <div class="hero-photo-placeholder" style="display:none;">
             <i class="fas fa-image"></i>
-            <span>Salve a imagem como <strong>foto-hero.jpg</strong> na pasta levanny</span>
+            <span>Salve a imagem como <strong>LevanyRogge.jpeg</strong> na pasta levanny</span>
           </div>
         </div>
       </div>
@@ -1248,31 +1264,31 @@
   <div class="container">
     <div class="features-grid">
       <div class="feature-item reveal">
-        <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="feature-icon"><i class="fas fa-award"></i></div>
         <div>
-          <div class="feature-label">30+ anos de experiência</div>
-          <div class="feature-desc">Atuação dedicada à educação e proteção infantil</div>
-        </div>
-      </div>
-      <div class="feature-item reveal">
-        <div class="feature-icon"><i class="fas fa-certificate"></i></div>
-        <div>
-          <div class="feature-label">25+ cursos de formação</div>
-          <div class="feature-desc">Formação de Facilitadores de Justiça Restaurativa</div>
-        </div>
-      </div>
-      <div class="feature-item reveal">
-        <div class="feature-icon"><i class="fas fa-circle-nodes"></i></div>
-        <div>
-          <div class="feature-label">300+ círculos de diálogo</div>
-          <div class="feature-desc">Transformando escolas, famílias e comunidades</div>
+          <div class="feature-label">+30 anos</div>
+          <div class="feature-desc">Dedicados à educação e ao desenvolvimento humano</div>
         </div>
       </div>
       <div class="feature-item reveal">
         <div class="feature-icon"><i class="fas fa-earth-americas"></i></div>
         <div>
-          <div class="feature-label">Atuação internacional</div>
-          <div class="feature-desc">Espírito Santo, ES e Massachusetts, EUA</div>
+          <div class="feature-label">Atuação nacional e internacional</div>
+          <div class="feature-desc">Formando profissionais e desenvolvendo projetos no Brasil e nos Estados Unidos</div>
+        </div>
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-icon"><i class="fas fa-shapes"></i></div>
+        <div>
+          <div class="feature-label">Método próprio</div>
+          <div class="feature-desc">Criadora do Método REAP+, que integra Educação Sexual, Educação Emocional, Justiça Restaurativa e prevenção</div>
+        </div>
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-icon"><i class="fas fa-book-open-reader"></i></div>
+        <div>
+          <div class="feature-label">Formação continuada</div>
+          <div class="feature-desc">Práticas atualizadas, éticas e fundamentadas em evidências científicas</div>
         </div>
       </div>
     </div>
@@ -1289,17 +1305,16 @@
       <!-- Coluna esquerda: foto -->
       <div class="sobre-foto-wrap">
         <img
-          src="foto-levany.jpg"
-          alt="Levany Rogge — Pedagoga e Especialista em Proteção Infantil"
+          src="LevanyRogge.jpeg"
+          alt="Levany Rogge — Pedagoga e Especialista em Educação Sexual, Emocional e Prevenção ao Abuso Sexual"
           class="sobre-foto"
           loading="lazy"
-          onerror="this.src='foto-hero.jpg';"
         >
         <div class="sobre-foto-badge">
           <i class="fas fa-award"></i>
           <div class="sobre-foto-badge-text">
-            <strong>30+ anos de atuação</strong>
-            Educação, proteção infantil e justiça restaurativa
+            <strong>+30 anos de atuação</strong>
+            Educação, prevenção e proteção infantil
           </div>
         </div>
       </div>
@@ -1307,57 +1322,46 @@
       <!-- Coluna direita: conteúdo -->
       <div class="sobre-content reveal">
         <span class="eyebrow">QUEM É LEVANY</span>
-        <h2>Levany Rogge</h2>
-        <div class="sobre-subtitle">Pedagoga &nbsp;|&nbsp; Especialista em Proteção Infantil &nbsp;|&nbsp; Instrutora de Justiça Restaurativa</div>
+        <h2>Conheça quem está por trás dessa missão</h2>
+        <div class="sobre-subtitle">Há mais de 30 anos transformando conhecimento em proteção para crianças, adolescentes, famílias e profissionais.</div>
 
         <div class="sobre-bio">
-          <p>Com mais de 30 anos dedicados à educação, Levany Rogge construiu uma trajetória singular que une pedagogia, psicologia do aconselhamento e justiça restaurativa em prol da proteção de crianças e adolescentes.</p>
-          <p>Certificada pela Ajuris de Porto Alegre e pelo Tribunal de Justiça do Espírito Santo (TJES) como instrutora de Justiça Restaurativa, é também Master ESEPAS — especialista em Educação Sexual, Emocional e Prevenção de Abuso Sexual Infantil. Atualmente é pós-graduanda em ESEPAS pela Faculdade Focus de Brasília.</p>
-          <p>Sua atuação vai além do ES: já levou o trabalho de círculos restaurativos e prevenção ao abuso para comunidades imigrantes e religiosas em Massachusetts, nos Estados Unidos, consolidando um impacto verdadeiramente internacional.</p>
-        </div>
-
-        <!-- Estatísticas -->
-        <div class="sobre-stats">
-          <div class="sobre-stat reveal">
-            <div class="sobre-stat-num">30+</div>
-            <div class="sobre-stat-label">Anos de experiência em educação</div>
-          </div>
-          <div class="sobre-stat reveal">
-            <div class="sobre-stat-num">25+</div>
-            <div class="sobre-stat-label">Cursos de Formação de Facilitadores</div>
-          </div>
-          <div class="sobre-stat reveal">
-            <div class="sobre-stat-num">300+</div>
-            <div class="sobre-stat-label">Círculos de diálogo conduzidos</div>
-          </div>
-          <div class="sobre-stat reveal">
-            <div class="sobre-stat-num">15+</div>
-            <div class="sobre-stat-label">Palestras/oficinas de prevenção ao abuso</div>
-          </div>
+          <p>Sou Levany Rogge, pedagoga e especialista em Educação Sexual, Educação Emocional e Prevenção ao Abuso Sexual.</p>
+          <p>Ao longo de mais de três décadas dedicadas à educação, compreendi que proteger crianças e adolescentes exige mais do que boas intenções. É preciso preparar famílias, educadores, profissionais e instituições para reconhecer sinais, estabelecer diálogos seguros e agir de forma ética, responsável e acolhedora.</p>
+          <p>Foi essa convicção que direcionou minha trajetória de formação e atuação. Hoje desenvolvo palestras, formações, consultorias e projetos voltados à prevenção do abuso sexual, ao fortalecimento da educação emocional e à construção de ambientes mais seguros para crianças e adolescentes.</p>
+          <p>Minha missão é transformar conhecimento em ação, fortalecendo adultos para que sejam agentes de proteção e promovam uma cultura de respeito, cuidado e prevenção.</p>
         </div>
 
         <!-- Formações -->
-        <span class="sobre-certs-title">Formação e Certificações</span>
+        <span class="sobre-certs-title">Formação e Especializações</span>
         <div class="sobre-certs">
           <div class="sobre-cert-item reveal">
             <i class="fas fa-circle-check"></i>
-            <span>Pedagoga com especialização em <strong>Psicologia do Aconselhamento Familiar e Escolar</strong></span>
+            <span>Pedagoga</span>
           </div>
           <div class="sobre-cert-item reveal">
             <i class="fas fa-circle-check"></i>
-            <span>Instrutora de <strong>Justiça Restaurativa</strong> certificada pela Ajuris (Porto Alegre) e pelo TJES (Tribunal de Justiça do ES)</span>
+            <span>Especialista em <strong>Educação Sexual</strong></span>
           </div>
           <div class="sobre-cert-item reveal">
             <i class="fas fa-circle-check"></i>
-            <span><strong>Master ESEPAS</strong> — Educação Sexual, Emocional e Prevenção de Abuso Sexual Infantil</span>
+            <span>Especialista em <strong>Educação Emocional</strong></span>
           </div>
           <div class="sobre-cert-item reveal">
             <i class="fas fa-circle-check"></i>
-            <span>Pós-graduanda em <strong>ESEPAS</strong> pela Faculdade Focus de Brasília</span>
+            <span>Master em <strong>Educação Sexual, Emocional e Prevenção ao Abuso Sexual (ESEPAS)</strong></span>
           </div>
           <div class="sobre-cert-item reveal">
             <i class="fas fa-circle-check"></i>
-            <span>Especialização em <strong>Informática na Educação</strong> (IFES) e Pós-graduação em <strong>Gestão Escolar</strong> (FADMINAS)</span>
+            <span>Formação em <strong>Justiça Restaurativa</strong></span>
+          </div>
+          <div class="sobre-cert-item reveal">
+            <i class="fas fa-circle-check"></i>
+            <span>Formação continuada em <strong>proteção integral de crianças e adolescentes</strong></span>
+          </div>
+          <div class="sobre-cert-item reveal">
+            <i class="fas fa-circle-check"></i>
+            <span>Capacitação permanente em prevenção, acolhimento e fortalecimento das redes de proteção</span>
           </div>
         </div>
 
@@ -1365,17 +1369,17 @@
         <div class="sobre-intl reveal">
           <i class="fas fa-earth-americas"></i>
           <div class="sobre-intl-text">
-            <strong>Atuação Internacional</strong>
-            Levou os círculos de justiça restaurativa e programas de prevenção ao abuso infantil para comunidades imigrantes e religiosas em <strong>Massachusetts, EUA</strong>.
+            <strong>Experiência Internacional</strong>
+            Atuação em Massachusetts (EUA), desenvolvendo ações de formação e projetos voltados à educação, prevenção e fortalecimento de redes de proteção, ampliando a troca de experiências e boas práticas em contextos nacionais e internacionais.
           </div>
         </div>
 
         <div class="sobre-actions">
           <a href="https://wa.me/18572434270?text=Olá%2C%20Levany!%20Vi%20seu%20perfil%20e%20gostaria%20de%20saber%20mais%20sobre%20seu%20trabalho."
-             target="_blank" rel="noopener noreferrer" class="btn btn-orange">
+             target="_blank" rel="noopener noreferrer" class="btn btn-primary">
             <i class="fab fa-whatsapp"></i> Conversar com Levany
           </a>
-          <a href="https://www.instagram.com/levanyrogge/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-navy">
+          <a href="https://www.instagram.com/levanyrogge/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
             <i class="fab fa-instagram"></i> @levanyrogge
           </a>
         </div>
@@ -1393,45 +1397,41 @@
 <!-- ============================================================
      PARA QUEM É
 ============================================================ -->
-<section id="para-quem" aria-label="Para quem é">
+<section id="para-quem" aria-label="Para quem desenvolvo soluções">
   <div class="container">
     <div class="pq-grid">
       <div class="pq-left">
         <span class="eyebrow">PARA QUEM É</span>
-        <h2>Você não está sozinha.</h2>
-        <p>Atuo ao lado de mães, familiares e responsáveis que buscam proteção e educação para crianças e adolescentes vítimas de violência ou em situação de risco.</p>
-        <a href="#contato" class="btn btn-outline-orange" style="font-size:0.8125rem;">Saiba mais sobre cada situação</a>
+        <h2>Para quem desenvolvo soluções</h2>
+        <p class="servicos-sub" style="margin-bottom:14px;">Capacitando quem tem a responsabilidade de educar, proteger e transformar vidas.</p>
+        <p>Meu trabalho é direcionado a profissionais e instituições que desejam atuar com segurança, conhecimento e responsabilidade na promoção da Educação Sexual, Educação Emocional e na prevenção do abuso sexual.</p>
+        <a href="#contato" class="btn btn-secondary" style="font-size:0.8125rem;">Saiba mais sobre cada situação</a>
       </div>
       <div class="pq-cards">
         <div class="pq-card reveal">
-          <div class="pq-card-icon"><i class="fas fa-person-shelter"></i></div>
-          <h3>Mães e familiares</h3>
-          <p>Que buscam orientação e apoio para proteger seus filhos com segurança.</p>
-        </div>
-        <div class="pq-card reveal">
-          <div class="pq-card-icon"><i class="fas fa-shield-heart"></i></div>
-          <h3>Crianças e adolescentes</h3>
-          <p>Que sofreram violência ou estão em situação de risco e precisam de proteção.</p>
-        </div>
-        <div class="pq-card reveal">
-          <div class="pq-card-icon"><i class="fas fa-people-arrows"></i></div>
-          <h3>Responsáveis legais</h3>
-          <p>Que buscam garantir os direitos e o bem-estar de crianças e adolescentes.</p>
+          <div class="pq-card-icon"><i class="fas fa-chalkboard-user"></i></div>
+          <h3>Profissionais</h3>
+          <p>Educadores, psicólogos, pedagogos, assistentes sociais, profissionais da saúde, conselheiros tutelares e demais profissionais que desejam ampliar seus conhecimentos, fortalecer sua prática e atuar com segurança na prevenção, identificação e acolhimento de situações de violência.</p>
         </div>
         <div class="pq-card reveal">
           <div class="pq-card-icon"><i class="fas fa-school"></i></div>
-          <h3>Educadores</h3>
-          <p>Professores e coordenadores que precisam saber como agir quando uma criança pede ajuda.</p>
-        </div>
-        <div class="pq-card reveal">
-          <div class="pq-card-icon"><i class="fas fa-stethoscope"></i></div>
-          <h3>Profissionais de saúde</h3>
-          <p>Médicos e assistentes que precisam de protocolo claro para acolhimento seguro.</p>
+          <h3>Escolas</h3>
+          <p>Capacitação de gestores, professores e equipes escolares para implementar uma cultura de prevenção, fortalecer protocolos de proteção e promover ambientes educativos mais seguros, respeitosos e acolhedores.</p>
         </div>
         <div class="pq-card reveal">
           <div class="pq-card-icon"><i class="fas fa-landmark"></i></div>
-          <h3>Gestores públicos</h3>
-          <p>Secretarias e instituições que querem implementar cultura de proteção infantil.</p>
+          <h3>Órgãos Públicos e Redes de Proteção</h3>
+          <p>Consultorias, formações e projetos voltados para secretarias, conselhos, municípios e instituições que atuam na garantia dos direitos de crianças e adolescentes e no fortalecimento das políticas públicas de proteção.</p>
+        </div>
+        <div class="pq-card reveal">
+          <div class="pq-card-icon"><i class="fas fa-building-columns"></i></div>
+          <h3>Instituições e Empresas</h3>
+          <p>Palestras, treinamentos e programas personalizados para organizações comprometidas com a formação de equipes, responsabilidade social e promoção de ambientes seguros.</p>
+        </div>
+        <div class="pq-card reveal">
+          <div class="pq-card-icon"><i class="fas fa-people-roof"></i></div>
+          <h3>Famílias</h3>
+          <p>Orientações e ações educativas que fortalecem o diálogo, a educação emocional e a construção de relações de confiança, contribuindo para que pais e responsáveis exerçam seu papel protetivo com mais segurança.</p>
         </div>
       </div>
     </div>
@@ -1441,11 +1441,13 @@
 <!-- ============================================================
      SERVIÇOS
 ============================================================ -->
-<section id="servicos" aria-label="Serviços">
+<section id="servicos" aria-label="Áreas de Atuação">
   <div class="container">
     <div class="servicos-header reveal">
-      <span class="eyebrow">SERVIÇOS</span>
-      <h2>Como posso te ajudar</h2>
+      <span class="eyebrow">ÁREAS DE ATUAÇÃO</span>
+      <h2>Áreas de Atuação</h2>
+      <p class="servicos-sub">Soluções que fortalecem pessoas, instituições e redes de proteção</p>
+      <p class="servicos-intro">Cada ação é desenvolvida com base em evidências científicas, metodologia própria e uma abordagem humanizada, promovendo conhecimento, prevenção e ambientes mais seguros para crianças e adolescentes.</p>
     </div>
     <div class="servicos-grid">
       <div class="servico-card reveal" tabindex="0" role="button" aria-haspopup="dialog"
@@ -1453,15 +1455,7 @@
            onkeydown="if(event.key==='Enter'||event.key===' ')openServico('palestra')">
         <i class="fas fa-microphone servico-icon"></i>
         <h3>Palestras</h3>
-        <p>Apresentações de alto impacto para conscientizar grandes grupos sobre prevenção ao abuso, justiça restaurativa e comunicação não violenta.</p>
-        <span class="link-arrow">Saiba mais <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></span>
-      </div>
-      <div class="servico-card reveal" tabindex="0" role="button" aria-haspopup="dialog"
-           onclick="openServico('oficina')"
-           onkeydown="if(event.key==='Enter'||event.key===' ')openServico('oficina')">
-        <i class="fas fa-tools servico-icon"></i>
-        <h3>Oficinas</h3>
-        <p>Encontros práticos focados em dinâmicas e resolução de casos reais para identificar, acolher e encaminhar com segurança.</p>
+        <p>Encontros dinâmicos e transformadores para famílias, escolas, empresas e instituições, abordando temas como Educação Sexual, Educação Emocional, prevenção ao abuso sexual, proteção integral, cultura do respeito e fortalecimento das redes de cuidado.</p>
         <span class="link-arrow">Saiba mais <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></span>
       </div>
       <div class="servico-card reveal" tabindex="0" role="button" aria-haspopup="dialog"
@@ -1469,25 +1463,44 @@
            onkeydown="if(event.key==='Enter'||event.key===' ')openServico('formacao')">
         <i class="fas fa-certificate servico-icon"></i>
         <h3>Formações</h3>
-        <p>Cursos aprofundados com base no Método REAP+, com certificação e acompanhamento contínuo para quem quer atuar com segurança.</p>
+        <p>Capacitações para educadores, profissionais da saúde, assistência social, conselhos, lideranças e equipes multidisciplinares que desejam atuar com mais segurança, conhecimento e responsabilidade na prevenção e proteção de crianças e adolescentes.</p>
         <span class="link-arrow">Saiba mais <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></span>
       </div>
       <div class="servico-card reveal" tabindex="0" role="button" aria-haspopup="dialog"
-           onclick="openServico('capacitacao')"
-           onkeydown="if(event.key==='Enter'||event.key===' ')openServico('capacitacao')">
+           onclick="openServico('consultoria')"
+           onkeydown="if(event.key==='Enter'||event.key===' ')openServico('consultoria')">
         <i class="fas fa-building-columns servico-icon"></i>
-        <h3>Capacitação Institucional</h3>
-        <p>Consultoria e treinamento sob medida para criar e implementar protocolos de proteção dentro da sua organização.</p>
+        <h3>Consultorias</h3>
+        <p>Assessoria personalizada para escolas, instituições e organizações na implantação de protocolos de proteção, elaboração de projetos, desenvolvimento de equipes e fortalecimento de políticas de prevenção.</p>
         <span class="link-arrow">Saiba mais <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></span>
       </div>
       <div class="servico-card reveal" tabindex="0" role="button" aria-haspopup="dialog"
-           onclick="openServico('orientacao')"
-           onkeydown="if(event.key==='Enter'||event.key===' ')openServico('orientacao')">
-        <i class="fas fa-chalkboard-user servico-icon"></i>
-        <h3>Orientação e Prevenção</h3>
-        <p>Palestras, treinamentos e orientações para conscientização e prevenção da violência infantil em escolas e famílias.</p>
+           onclick="openServico('oficina')"
+           onkeydown="if(event.key==='Enter'||event.key===' ')openServico('oficina')">
+        <i class="fas fa-tools servico-icon"></i>
+        <h3>Oficinas</h3>
+        <p>Experiências práticas e participativas que estimulam o desenvolvimento de competências socioemocionais, comunicação, autocuidado, respeito aos limites, convivência saudável e construção de ambientes protetivos.</p>
         <span class="link-arrow">Saiba mais <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></span>
       </div>
+      <div class="servico-card reveal" tabindex="0" role="button" aria-haspopup="dialog"
+           onclick="openServico('projetos')"
+           onkeydown="if(event.key==='Enter'||event.key===' ')openServico('projetos')">
+        <i class="fas fa-chalkboard-user servico-icon"></i>
+        <h3>Projetos Educacionais</h3>
+        <p>Planejamento e execução de programas permanentes voltados à Educação Sexual, Educação Emocional e prevenção das violências, adaptados à realidade de escolas, municípios e instituições.</p>
+        <span class="link-arrow">Saiba mais <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></span>
+      </div>
+      <div class="servico-card reveal" tabindex="0" role="button" aria-haspopup="dialog"
+           onclick="openServico('restaurativa')"
+           onkeydown="if(event.key==='Enter'||event.key===' ')openServico('restaurativa')">
+        <i class="fas fa-people-arrows servico-icon"></i>
+        <h3>Justiça Restaurativa</h3>
+        <p>Formações e práticas restaurativas voltadas ao fortalecimento das relações, resolução de conflitos, construção de diálogo e promoção de uma cultura de paz nos ambientes educativos e institucionais.</p>
+        <span class="link-arrow">Saiba mais <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></span>
+      </div>
+    </div>
+    <div class="servicos-cta reveal">
+      <a href="#metodo" class="btn btn-secondary">Conheça o Método REAP+</a>
     </div>
   </div>
 </section>
@@ -1502,48 +1515,60 @@
         <span class="eyebrow">MÉTODO</span>
         <h2>Método REAP+</h2>
         <div class="metodo-divider"></div>
-        <p>Um método exclusivo que une acolhimento humanizado, estratégia prática e ação multidisciplinar para garantir proteção efetiva e transformar realidades.</p>
-        <a href="#contato" class="btn btn-outline-navy" style="font-size:0.8125rem;">Conheça o Método</a>
+        <p class="servicos-sub" style="margin-bottom:14px;">Uma metodologia que transforma conhecimento em ações concretas de prevenção e proteção.</p>
+        <p>O Método REAP+ foi desenvolvido para capacitar profissionais, escolas, instituições e redes de proteção a atuarem com segurança, intencionalidade e responsabilidade diante dos desafios da Educação Sexual, Educação Emocional e da prevenção ao abuso sexual. Mais do que um método, é uma abordagem que integra formação, acolhimento e estratégias práticas para fortalecer pessoas, prevenir violências e construir ambientes verdadeiramente protetivos.</p>
+
+        <span class="sobre-certs-title" style="margin-top:8px;">Aplicado em</span>
+        <div class="sobre-certs" style="margin-bottom:32px;">
+          <div class="sobre-cert-item reveal"><i class="fas fa-circle-check"></i><span>Formações e capacitações profissionais</span></div>
+          <div class="sobre-cert-item reveal"><i class="fas fa-circle-check"></i><span>Escolas e instituições de ensino</span></div>
+          <div class="sobre-cert-item reveal"><i class="fas fa-circle-check"></i><span>Consultorias e implantação de protocolos</span></div>
+          <div class="sobre-cert-item reveal"><i class="fas fa-circle-check"></i><span>Projetos educacionais</span></div>
+          <div class="sobre-cert-item reveal"><i class="fas fa-circle-check"></i><span>Palestras e oficinas</span></div>
+          <div class="sobre-cert-item reveal"><i class="fas fa-circle-check"></i><span>Redes de proteção e órgãos públicos</span></div>
+        </div>
+
+        <a href="#contato" class="btn btn-secondary" style="font-size:0.8125rem;">Conheça as soluções para sua instituição</a>
       </div>
       <div class="reap-rows">
         <div class="reap-row reveal">
-          <span class="reap-row-letter">R</span>
+          <span class="reap-row-letter">R <span class="reap-row-emoji">🤝</span></span>
           <div class="reap-row-divider"></div>
           <div class="reap-row-content">
             <div class="reap-row-title">Restaurar</div>
-            <div class="reap-row-desc">Trabalhamos a justiça restaurativa e os círculos de diálogo para reconstruir laços, mediar conflitos e garantir um ambiente seguro para o desenvolvimento.</div>
+            <div class="reap-row-desc">Fortalecer vínculos, reconstruir relações e promover o diálogo por meio de práticas restaurativas que valorizam o respeito, a escuta e a corresponsabilidade.</div>
           </div>
         </div>
         <div class="reap-row reveal">
-          <span class="reap-row-letter dark">E</span>
+          <span class="reap-row-letter dark">E <span class="reap-row-emoji">📚</span></span>
           <div class="reap-row-divider"></div>
           <div class="reap-row-content">
             <div class="reap-row-title">Educar</div>
-            <div class="reap-row-desc">A educação emocional e sexual é a primeira linha de defesa. Ensinamos crianças a reconhecerem seus limites e profissionais a abordarem o tema com clareza e respeito.</div>
+            <div class="reap-row-desc">Desenvolver conhecimentos e competências em Educação Sexual e Educação Emocional, preparando adultos para orientar, prevenir e agir com segurança.</div>
           </div>
         </div>
         <div class="reap-row reveal">
-          <span class="reap-row-letter">A</span>
+          <span class="reap-row-letter">A <span class="reap-row-emoji">❤️</span></span>
           <div class="reap-row-divider"></div>
           <div class="reap-row-content">
-            <div class="reap-row-title">Acolher / Amparar</div>
-            <div class="reap-row-desc">Quando a revelação acontece, o primeiro momento é decisivo. Oferecemos suporte emocional e técnico, preparando o adulto para praticar a escuta ativa e empática, evitando a revitimização.</div>
+            <div class="reap-row-title">Acolher</div>
+            <div class="reap-row-desc">Promover uma escuta qualificada, ética e humanizada, respeitando cada história e fortalecendo uma atuação responsável diante de situações de vulnerabilidade.</div>
           </div>
         </div>
         <div class="reap-row reveal">
-          <span class="reap-row-letter dark">P</span>
+          <span class="reap-row-letter dark">P <span class="reap-row-emoji">🛡️</span></span>
           <div class="reap-row-divider"></div>
           <div class="reap-row-content">
             <div class="reap-row-title">Proteger</div>
-            <div class="reap-row-desc">A proteção exige ação coordenada. Ensinamos os protocolos corretos, o acionamento da rede de apoio e os passos legais para garantir a integridade da vítima.</div>
+            <div class="reap-row-desc">Transformar conhecimento em práticas concretas de prevenção, fortalecendo protocolos, redes de proteção e ambientes seguros para crianças e adolescentes.</div>
           </div>
         </div>
         <div class="reap-row reveal">
-          <span class="reap-row-letter" style="font-size:3rem;">+</span>
+          <span class="reap-row-letter" style="font-size:3rem;">+ <span class="reap-row-emoji">🌱</span></span>
           <div class="reap-row-divider"></div>
           <div class="reap-row-content">
             <div class="reap-row-title">Transformar</div>
-            <div class="reap-row-desc">Mais do que resolver casos, transformamos vidas e construímos um futuro mais seguro para crianças e adolescentes. O impacto que vai além da crise.</div>
+            <div class="reap-row-desc">Gerar mudanças permanentes por meio da formação continuada, da construção de uma cultura de prevenção e do compromisso coletivo com a proteção da infância e da adolescência.</div>
           </div>
         </div>
       </div>
@@ -1594,29 +1619,11 @@
 <!-- ============================================================
      CTA BAR
 ============================================================ -->
-<section id="cta-bar" aria-label="Agendar atendimento">
+<section id="cta-bar" aria-label="Frase de impacto">
   <div class="container">
-    <div class="cta-inner reveal">
-      <div style="display:flex; align-items:center; gap:24px; flex: 1;">
-        <div class="cta-icon-wrap"><i class="fas fa-calendar-check"></i></div>
-        <div class="cta-text">
-          <h3>Vamos conversar sobre o seu caso?</h3>
-          <p>Atendimento humanizado e sigiloso para orientar você no melhor caminho para a proteção.</p>
-        </div>
-      </div>
-      <div class="cta-right">
-        <a
-          href="https://wa.me/18572434270?text=Olá%2C%20Levany!%20Acessei%20seu%20site%20e%20gostaria%20de%20agendar%20um%20atendimento."
-          class="btn btn-orange"
-          target="_blank" rel="noopener noreferrer"
-        >
-          Agendar Atendimento
-        </a>
-        <div class="cta-security">
-          <i class="fas fa-lock"></i>
-          <span>Seus dados estão protegidos</span>
-        </div>
-      </div>
+    <div class="cta-impact-wrap reveal">
+      <i class="fas fa-quote-left cta-impact-icon"></i>
+      <p class="cta-impact-text">Quando os adultos estão preparados, as crianças estão mais protegidas</p>
     </div>
   </div>
 </section>
@@ -1628,8 +1635,8 @@
   <div class="container">
     <div class="contato-wrap">
       <span class="eyebrow">FALE CONOSCO</span>
-      <h2>Pronta para levar o Método REAP+ para a sua instituição?</h2>
-      <p class="sub">Entre em contato e vamos conversar sobre como posso ajudar sua equipe, escola ou organização.</p>
+      <h2>Vamos construir ambientes mais seguros juntos?</h2>
+      <p class="sub">Se você busca uma formação, palestra, consultoria ou um projeto personalizado em Educação Sexual, Educação Emocional e Prevenção ao Abuso Sexual, será um prazer conhecer a realidade da sua instituição e construir a melhor solução para sua equipe. Cada projeto é desenvolvido de forma personalizada, respeitando as necessidades, os desafios e os objetivos de cada organização. Preencha seus dados e entrarei em contato para conversarmos sobre a melhor proposta para você.</p>
       <form id="contato-form" novalidate>
         <div class="form-row">
           <div class="form-group">
@@ -1644,25 +1651,36 @@
           </div>
         </div>
         <div class="form-row">
+          <div class="form-group">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+            <span class="form-err-msg" id="e-email">Informe um e-mail válido.</span>
+          </div>
+          <div class="form-group">
+            <label for="instituicao">Instituição/Empresa</label>
+            <input type="text" id="instituicao" name="instituicao" placeholder="Nome da instituição ou empresa">
+          </div>
+        </div>
+        <div class="form-row">
           <div class="form-group form-full">
-            <label for="interesse">Tipo de interesse *</label>
-            <select id="interesse" name="interesse" required>
-              <option value="">Selecione uma opção</option>
-              <option value="Palestra">Palestra</option>
-              <option value="Oficina">Oficina</option>
-              <option value="Formação">Formação</option>
-              <option value="Capacitação Institucional">Capacitação Institucional</option>
-              <option value="Quero entender melhor">Quero entender melhor</option>
-            </select>
-            <span class="form-err-msg" id="e-int">Selecione um tipo de interesse.</span>
+            <label for="cidade">Cidade e Estado</label>
+            <input type="text" id="cidade" name="cidade" placeholder="Ex.: Vila Velha, ES">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group form-full">
+            <label for="mensagem">Como posso ajudar?</label>
+            <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte um pouco sobre o que você precisa"></textarea>
           </div>
         </div>
         <div class="form-submit-row">
-          <button type="submit" class="btn btn-orange">
-            <i class="fab fa-whatsapp"></i> Falar pelo WhatsApp
+          <button type="submit" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i> Solicitar um contato
           </button>
+          <p class="form-note">Atendimento para todo o Brasil e projetos internacionais.</p>
         </div>
       </form>
+      <p class="form-footer-tags">Formações &bull; Palestras &bull; Consultorias &bull; Projetos Institucionais &bull; Capacitações Profissionais</p>
     </div>
   </div>
 </section>
@@ -1681,10 +1699,11 @@
           <div class="logo-initials" style="width:34px;height:34px;font-size:0.875rem;">LR</div>
           <div class="logo-text">
             <span class="logo-name" style="font-size:0.9rem;">Levany Rogge</span>
-            <span class="logo-sub">Proteção Estratégica</span>
+            <span class="logo-sub">Educação e Prevenção</span>
           </div>
         </div>
-        <p class="footer-desc">Especialista em proteção infantil e prevenção ao abuso. Capacitando profissionais, famílias e instituições para proteger crianças e adolescentes em situação de risco.</p>
+        <p class="footer-desc">Especialista em Educação Sexual, Emocional e Prevenção ao Abuso Sexual. Capacitando profissionais, escolas, instituições e famílias para promover ambientes mais seguros para crianças e adolescentes.</p>
+        <p class="footer-institutional">Protegendo crianças por meio da educação, prevenção e fortalecimento de famílias, escolas e profissionais.</p>
         <div class="footer-social">
           <a href="https://www.instagram.com/levanyrogge/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="https://wa.me/18572434270" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -1697,7 +1716,7 @@
           <li><a href="#inicio" class="footer-link">Início</a></li>
           <li><a href="#sobre-levany" class="footer-link">Sobre</a></li>
           <li><a href="#metodo" class="footer-link">Método REAP+</a></li>
-          <li><a href="#servicos" class="footer-link">Serviços</a></li>
+          <li><a href="#servicos" class="footer-link">Áreas de Atuação</a></li>
           <li><a href="#para-quem" class="footer-link">Para Quem É</a></li>
           <li><a href="#contato" class="footer-link">Contato</a></li>
         </ul>
@@ -1724,7 +1743,7 @@
     </div>
 
     <div class="footer-bottom">
-      <div class="footer-bottom-left">© 2026 Levany Rogge Proteção Estratégica. Todos os direitos reservados.</div>
+      <div class="footer-bottom-left">© 2026 Levany Rogge. Todos os direitos reservados.</div>
       <div class="footer-bottom-right">
         <a href="#" class="footer-bottom-link">Política de Privacidade</a>
         <span style="color:rgba(255,255,255,0.15)">|</span>
@@ -1789,103 +1808,110 @@
   const SERVICOS = {
     palestra: {
       icon: 'fa-microphone',
-      tag: 'Serviço',
-      title: 'Palestras de Proteção Infantil',
+      tag: 'Área de Atuação',
+      title: 'Palestras',
       subtitle: 'Conscientização e transformação em larga escala',
-      desc: 'Apresentações de alto impacto sobre proteção infantil, prevenção ao abuso, educação emocional e comunicação não violenta. Ideal para abrir debates e alinhar valores institucionais em escolas, empresas e eventos.',
+      desc: 'Encontros dinâmicos e transformadores para famílias, escolas, empresas e instituições, abordando temas como Educação Sexual, Educação Emocional, prevenção ao abuso sexual, proteção integral, cultura do respeito e fortalecimento das redes de cuidado.',
       includes: [
-        'Prevenção ao abuso infantil e reconhecimento de sinais',
-        'Educação emocional e corporal adequada à faixa etária',
-        'O papel do adulto na proteção de crianças',
-        'Como acolher uma revelação sem revitimizar',
-        'Rede de proteção: quem acionar e como',
+        'Educação Sexual e Educação Emocional aplicada',
+        'Prevenção ao abuso sexual e reconhecimento de sinais',
+        'Proteção integral de crianças e adolescentes',
+        'Cultura do respeito e fortalecimento das redes de cuidado',
       ],
       badges: [
-        { icon: 'fa-users', text: 'Escolas, empresas, eventos, conferências' },
-        { icon: 'fa-clock', text: '1h a 2h por sessão' },
+        { icon: 'fa-users', text: 'Famílias, escolas, empresas e instituições' },
         { icon: 'fa-wifi', text: 'Presencial ou online' },
       ],
       page: 'servico-palestra.html',
     },
-    oficina: {
-      icon: 'fa-tools',
-      tag: 'Serviço',
-      title: 'Oficinas Práticas',
-      subtitle: 'Ferramentas reais para situações reais',
-      desc: 'Encontros dinâmicos com metodologia ativa para profissionais aprenderem na prática como identificar, acolher e encaminhar casos com segurança e responsabilidade, usando os princípios do Método REAP+.',
-      includes: [
-        'Dinâmicas de identificação de sinais de abuso',
-        'Exercícios de escuta ativa e acolhimento seguro',
-        'Estudo de casos reais anonimizados',
-        'Protocolo de encaminhamento passo a passo',
-        'Círculos de diálogo e comunicação não violenta na prática',
-      ],
-      badges: [
-        { icon: 'fa-user-group', text: 'Grupos de até 30 pessoas' },
-        { icon: 'fa-clock', text: '4h a 8h por encontro' },
-        { icon: 'fa-location-dot', text: 'Presencial' },
-      ],
-      page: 'servico-oficina.html',
-    },
     formacao: {
       icon: 'fa-certificate',
-      tag: 'Serviço',
-      title: 'Formações com Certificado',
-      subtitle: 'Capacitação aprofundada com base científica',
-      desc: 'Cursos estruturados com embasamento científico e metodológico, baseados no Método REAP+. Você sairá preparado para atuar com segurança na área de proteção infantil, com certificado de conclusão.',
+      tag: 'Área de Atuação',
+      title: 'Formações',
+      subtitle: 'Capacitação com segurança e responsabilidade',
+      desc: 'Capacitações para educadores, profissionais da saúde, assistência social, conselhos, lideranças e equipes multidisciplinares que desejam atuar com mais segurança, conhecimento e responsabilidade na prevenção e proteção de crianças e adolescentes.',
       includes: [
-        'Módulo teórico completo do Método REAP+',
-        'Ferramentas práticas de proteção e prevenção',
-        'Educação sexual e emocional aplicada',
-        'Justiça restaurativa e círculos de diálogo',
-        'Avaliação final e emissão de certificado',
+        'Reconhecimento de sinais e acolhimento seguro',
+        'Fundamentos do Método REAP+',
+        'Protocolos de prevenção e encaminhamento',
+        'Prática multidisciplinar em rede de proteção',
       ],
       badges: [
-        { icon: 'fa-graduation-cap', text: 'Com certificado de conclusão' },
-        { icon: 'fa-clock', text: '20h a 40h de carga horária' },
-        { icon: 'fa-wifi', text: 'Online ou presencial' },
+        { icon: 'fa-user-group', text: 'Educadores e equipes multidisciplinares' },
+        { icon: 'fa-wifi', text: 'Presencial ou online' },
       ],
       page: 'servico-formacao.html',
     },
-    capacitacao: {
+    consultoria: {
       icon: 'fa-building-columns',
-      tag: 'Serviço',
-      title: 'Capacitação Institucional',
-      subtitle: 'Transformação cultural para toda a equipe',
-      desc: 'Consultoria e formação customizada para criar e implementar protocolos de proteção infantil dentro da sua organização. A equipe aprenderá a prevenir, identificar e agir de forma coordenada com o Método REAP+.',
+      tag: 'Área de Atuação',
+      title: 'Consultorias',
+      subtitle: 'Assessoria personalizada para instituições',
+      desc: 'Assessoria personalizada para escolas, instituições e organizações na implantação de protocolos de proteção, elaboração de projetos, desenvolvimento de equipes e fortalecimento de políticas de prevenção.',
       includes: [
-        'Diagnóstico inicial da cultura institucional',
-        'Elaboração de protocolo de proteção personalizado',
-        'Formação de multiplicadores internos',
-        'Treinamento da equipe completa com o Método REAP+',
-        'Suporte e acompanhamento pós-formação',
+        'Diagnóstico institucional e elaboração de protocolos',
+        'Desenvolvimento de equipes e multiplicadores internos',
+        'Fortalecimento de políticas de prevenção',
+        'Acompanhamento contínuo da implementação',
       ],
       badges: [
-        { icon: 'fa-building', text: 'Secretarias, creches, hospitais, ONGs' },
-        { icon: 'fa-clock', text: 'Mínimo 40h customizadas' },
+        { icon: 'fa-building', text: 'Escolas, instituições e organizações' },
         { icon: 'fa-arrows-left-right', text: 'Presencial e/ou online' },
       ],
       page: 'servico-capacitacao.html',
     },
-    orientacao: {
-      icon: 'fa-chalkboard-user',
-      tag: 'Serviço',
-      title: 'Orientação e Prevenção',
-      subtitle: 'Educação contínua para comunidades mais seguras',
-      desc: 'Palestras, workshops e treinamentos especializados para conscientização e prevenção contínua da violência infantil em escolas, famílias e comunidades, com material didático adaptado por faixa etária.',
+    oficina: {
+      icon: 'fa-tools',
+      tag: 'Área de Atuação',
+      title: 'Oficinas',
+      subtitle: 'Experiências práticas e participativas',
+      desc: 'Experiências práticas e participativas que estimulam o desenvolvimento de competências socioemocionais, comunicação, autocuidado, respeito aos limites, convivência saudável e construção de ambientes protetivos.',
       includes: [
-        'Programas de educação preventiva nas escolas',
-        'Orientação para pais e responsáveis',
-        'Capacitação de professores para identificação de riscos',
-        'Rodas de conversa com adolescentes sobre limites e proteção',
-        'Material didático adaptado por faixa etária',
+        'Desenvolvimento de competências socioemocionais',
+        'Comunicação, autocuidado e respeito aos limites',
+        'Dinâmicas de convivência saudável',
+        'Construção de ambientes protetivos',
       ],
       badges: [
-        { icon: 'fa-school', text: 'Escolas públicas e privadas, famílias' },
-        { icon: 'fa-clock', text: 'Formato flexível' },
-        { icon: 'fa-wifi', text: 'Presencial ou online' },
+        { icon: 'fa-user-group', text: 'Grupos participativos' },
+        { icon: 'fa-location-dot', text: 'Presencial' },
+      ],
+      page: 'servico-oficina.html',
+    },
+    projetos: {
+      icon: 'fa-chalkboard-user',
+      tag: 'Área de Atuação',
+      title: 'Projetos Educacionais',
+      subtitle: 'Programas permanentes de educação e prevenção',
+      desc: 'Planejamento e execução de programas permanentes voltados à Educação Sexual, Educação Emocional e prevenção das violências, adaptados à realidade de escolas, municípios e instituições.',
+      includes: [
+        'Planejamento de programas permanentes',
+        'Adaptação à realidade local de escolas e municípios',
+        'Educação Sexual e Educação Emocional continuada',
+        'Prevenção das violências na comunidade escolar',
+      ],
+      badges: [
+        { icon: 'fa-school', text: 'Escolas, municípios e instituições' },
+        { icon: 'fa-wifi', text: 'Formato flexível' },
       ],
       page: 'servico-orientacao.html',
+    },
+    restaurativa: {
+      icon: 'fa-people-arrows',
+      tag: 'Área de Atuação',
+      title: 'Justiça Restaurativa',
+      subtitle: 'Diálogo, vínculos e cultura de paz',
+      desc: 'Formações e práticas restaurativas voltadas ao fortalecimento das relações, resolução de conflitos, construção de diálogo e promoção de uma cultura de paz nos ambientes educativos e institucionais.',
+      includes: [
+        'Círculos de diálogo e práticas restaurativas',
+        'Resolução de conflitos e fortalecimento de vínculos',
+        'Construção de diálogo entre equipes e comunidades',
+        'Promoção de uma cultura de paz institucional',
+      ],
+      badges: [
+        { icon: 'fa-people-group', text: 'Ambientes educativos e institucionais' },
+        { icon: 'fa-arrows-left-right', text: 'Presencial e/ou online' },
+      ],
     },
   };
 
@@ -1921,12 +1947,12 @@
       </div>
       <div class="svc-modal-footer">
         <a href="https://wa.me/18572434270?text=${encodeURIComponent('Olá, Levany! Tenho interesse em: '+s.title+'. Gostaria de saber mais.')}"
-           target="_blank" rel="noopener noreferrer" class="btn btn-orange">
+           target="_blank" rel="noopener noreferrer" class="btn btn-primary">
           <i class="fab fa-whatsapp"></i> Falar com a Levany
         </a>
-        <a href="${s.page}" class="btn btn-outline-navy">
+        ${s.page ? `<a href="${s.page}" class="btn btn-secondary">
           Ver página completa <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
-        </a>
+        </a>` : ''}
       </div>
     `;
 
@@ -1948,20 +1974,26 @@
   // ============ FORMULÁRIO WHATSAPP ============
   document.getElementById('contato-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    const nome = document.getElementById('nome');
-    const tel  = document.getElementById('telefone');
-    const int  = document.getElementById('interesse');
+    const nome  = document.getElementById('nome');
+    const tel   = document.getElementById('telefone');
+    const email = document.getElementById('email');
+    const inst  = document.getElementById('instituicao');
+    const cidade = document.getElementById('cidade');
+    const msg2  = document.getElementById('mensagem');
     let ok = true;
 
-    [nome, tel, int].forEach(f => { f.classList.remove('err'); });
+    [nome, tel, email].forEach(f => { f.classList.remove('err'); });
     document.querySelectorAll('.form-err-msg').forEach(m => m.classList.remove('show'));
 
-    if (!nome.value.trim()) { nome.classList.add('err'); document.getElementById('e-nome').classList.add('show'); ok = false; }
-    if (!tel.value.trim())  { tel.classList.add('err');  document.getElementById('e-tel').classList.add('show');  ok = false; }
-    if (!int.value)         { int.classList.add('err');  document.getElementById('e-int').classList.add('show');  ok = false; }
+    if (!nome.value.trim())  { nome.classList.add('err');  document.getElementById('e-nome').classList.add('show');  ok = false; }
+    if (!tel.value.trim())   { tel.classList.add('err');   document.getElementById('e-tel').classList.add('show');   ok = false; }
+    if (!email.value.trim() || !email.checkValidity()) { email.classList.add('err'); document.getElementById('e-email').classList.add('show'); ok = false; }
 
     if (ok) {
-      const msg = `Olá, Levany! Me chamo ${nome.value.trim()} e tenho interesse em: ${int.value}. Meu WhatsApp: ${tel.value.trim()}. Gostaria de saber mais.`;
+      let msg = `Olá, Levany! Me chamo ${nome.value.trim()} e gostaria de solicitar um contato.\nWhatsApp: ${tel.value.trim()}\nE-mail: ${email.value.trim()}`;
+      if (inst.value.trim())   msg += `\nInstituição/Empresa: ${inst.value.trim()}`;
+      if (cidade.value.trim()) msg += `\nCidade e Estado: ${cidade.value.trim()}`;
+      if (msg2.value.trim())   msg += `\nComo posso ajudar: ${msg2.value.trim()}`;
       window.open(`https://wa.me/18572434270?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
     }
   });
