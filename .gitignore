@@ -22,6 +22,9 @@ build/
 
 # IDE
 .vscode/settings.json
+.vscode/mcp.json
+.mcp.json
+.hyperide/
 .idea/
 *.suo
 *.swp
