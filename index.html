@@ -27,6 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="anime.min.js"></script>
 
   <script type="application/ld+json">
   {
@@ -565,6 +566,82 @@
     }
     .reap-row-desc {
       font-size: 0.875rem; color: var(--color-muted); line-height: 1.6;
+    }
+
+    /* ============ CÍRCULO REAP+ (anime.js) ============ */
+    .reap-wheel-section { text-align: center; margin-bottom: 56px; }
+    .reap-wheel-wrap {
+      position: relative;
+      width: 300px; height: 300px;
+      margin: 0 auto 20px;
+    }
+    .reap-wheel-center {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 96px; height: 96px; border-radius: 50%;
+      background: #fff; box-shadow: var(--shadow-card-hover);
+      border: 3px solid var(--color-bg-alt);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 5;
+    }
+    .reap-wheel-center span {
+      font-family: var(--font-serif);
+      font-size: 1.0625rem; font-weight: 900;
+      color: var(--color-primary); letter-spacing: -0.02em;
+    }
+    .reap-wheel { position: absolute; inset: 0; will-change: transform; }
+    .reap-wheel-ring {
+      position: absolute; inset: 0; border-radius: 50%;
+      border: 1.5px dashed var(--color-border);
+    }
+    .reap-pillar { position: absolute; inset: 0; }
+    .reap-pillar-spoke {
+      position: absolute; top: 0; left: 50%;
+      width: 2px; height: 50%;
+      background: linear-gradient(to top, var(--color-border), transparent);
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+    .reap-pillar-anchor {
+      position: absolute; top: 0; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+    .reap-pillar-counter {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      will-change: transform;
+    }
+    .reap-bubble {
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; box-shadow: var(--shadow-card);
+      font-family: var(--font-serif); font-weight: 900; font-size: 1.25rem;
+      position: relative;
+      gap: 2px;
+    }
+    .reap-bubble-emoji { font-size: 0.8rem; position: absolute; bottom: -4px; right: -4px;
+      background: #fff; border-radius: 50%; width: 20px; height: 20px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 1px 4px rgba(18,58,99,0.25);
+    }
+    .reap-bubble--1, .reap-bubble--5 { background: var(--color-accent); }
+    .reap-bubble--2, .reap-bubble--4 { background: var(--color-primary); }
+    .reap-bubble--3 { background: var(--color-secondary); }
+    .reap-pillar-label {
+      font-size: 0.6875rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.04em; color: var(--color-text);
+      background: #fff; padding: 4px 10px; border-radius: 20px;
+      border: 1px solid var(--color-border); white-space: nowrap;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reap-wheel, .reap-pillar-counter { transition: none !important; }
+    }
+    @media (min-width: 768px) {
+      .reap-wheel-wrap { width: 420px; height: 420px; }
+      .reap-wheel-center { width: 128px; height: 128px; }
+      .reap-wheel-center span { font-size: 1.375rem; }
+      .reap-bubble { width: 68px; height: 68px; font-size: 1.5rem; }
+      .reap-pillar-label { font-size: 0.75rem; }
     }
 
     /* ============================================================
@@ -1497,6 +1574,51 @@
 ============================================================ -->
 <section id="metodo" aria-label="Método REAP+">
   <div class="container">
+
+    <div class="reap-wheel-section reveal">
+      <div class="reap-wheel-wrap" id="reapWheelWrap">
+        <div class="reap-wheel-ring"></div>
+        <div class="reap-wheel-center"><span>REAP+</span></div>
+        <div class="reap-wheel" id="reapWheel">
+          <div class="reap-pillar" style="transform:rotate(0deg)">
+            <div class="reap-pillar-spoke"></div>
+            <div class="reap-pillar-anchor"><div class="reap-pillar-counter" data-reap-counter data-base-angle="0">
+              <div class="reap-bubble reap-bubble--1">R<span class="reap-bubble-emoji">🤝</span></div>
+              <div class="reap-pillar-label">Restaurar</div>
+            </div></div>
+          </div>
+          <div class="reap-pillar" style="transform:rotate(72deg)">
+            <div class="reap-pillar-spoke"></div>
+            <div class="reap-pillar-anchor"><div class="reap-pillar-counter" data-reap-counter data-base-angle="72">
+              <div class="reap-bubble reap-bubble--2">E<span class="reap-bubble-emoji">📚</span></div>
+              <div class="reap-pillar-label">Educar</div>
+            </div></div>
+          </div>
+          <div class="reap-pillar" style="transform:rotate(144deg)">
+            <div class="reap-pillar-spoke"></div>
+            <div class="reap-pillar-anchor"><div class="reap-pillar-counter" data-reap-counter data-base-angle="144">
+              <div class="reap-bubble reap-bubble--3">A<span class="reap-bubble-emoji">❤️</span></div>
+              <div class="reap-pillar-label">Acolher</div>
+            </div></div>
+          </div>
+          <div class="reap-pillar" style="transform:rotate(216deg)">
+            <div class="reap-pillar-spoke"></div>
+            <div class="reap-pillar-anchor"><div class="reap-pillar-counter" data-reap-counter data-base-angle="216">
+              <div class="reap-bubble reap-bubble--4">P<span class="reap-bubble-emoji">🛡️</span></div>
+              <div class="reap-pillar-label">Proteger</div>
+            </div></div>
+          </div>
+          <div class="reap-pillar" style="transform:rotate(288deg)">
+            <div class="reap-pillar-spoke"></div>
+            <div class="reap-pillar-anchor"><div class="reap-pillar-counter" data-reap-counter data-base-angle="288">
+              <div class="reap-bubble reap-bubble--5">+<span class="reap-bubble-emoji">🌱</span></div>
+              <div class="reap-pillar-label">Transformar</div>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="metodo-grid">
       <div class="metodo-left reveal">
         <span class="eyebrow">MÉTODO</span>
@@ -2104,6 +2226,65 @@
 
     // init
     render(0);
+  })();
+
+  // ============ CÍRCULO REAP+ (scroll-linked, anime.js) ============
+  (function() {
+    const wrap = document.getElementById('reapWheelWrap');
+    const wheel = document.getElementById('reapWheel');
+    if (!wrap || !wheel || typeof anime === 'undefined') return;
+
+    const counters = wheel.querySelectorAll('[data-reap-counter]');
+    const bubbles = wheel.querySelectorAll('.reap-bubble');
+    const labels = wheel.querySelectorAll('.reap-pillar-label');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function updateWheel() {
+      if (reduceMotion) return;
+      const rect = wrap.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const total = rect.height + vh;
+      const traveled = vh - rect.top;
+      const progress = Math.min(1, Math.max(0, traveled / total));
+      const deg = progress * 360;
+
+      anime.set(wheel, { rotate: deg + 'deg' });
+      counters.forEach(el => {
+        const baseAngle = parseFloat(el.dataset.baseAngle) || 0;
+        anime.set(el, { rotate: (-deg - baseAngle) + 'deg' });
+      });
+    }
+
+    window.addEventListener('scroll', updateWheel, { passive: true });
+    window.addEventListener('resize', updateWheel);
+    updateWheel();
+
+    // Entrada suave dos círculos quando a seção aparece (uma única vez)
+    let entered = false;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !entered) {
+          entered = true;
+          if (!reduceMotion) {
+            anime.animate(bubbles, {
+              scale: [0, 1],
+              opacity: [0, 1],
+              duration: 600,
+              delay: anime.stagger(90),
+              ease: 'outElastic(1, .7)'
+            });
+            anime.animate(labels, {
+              opacity: [0, 1],
+              translateY: [8, 0],
+              duration: 500,
+              delay: anime.stagger(90, { start: 150 })
+            });
+          }
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+    io.observe(wrap);
   })();
 </script>
 
