@@ -396,15 +396,6 @@
       border-radius: 18px;
       box-shadow: 0 10px 28px rgba(18,58,99,0.18);
     }
-    .hero-photo-placeholder {
-      width: 100%; min-height: 516px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 16px; color: rgba(18,58,99,0.25);
-      font-size: 0.875rem; text-align: center;
-    }
-    .hero-photo-placeholder i { font-size: 3rem; }
-
     /* ============================================================
        FEATURES STRIP
     ============================================================ */
@@ -1245,12 +1236,8 @@
             alt="Levany Rogge — Especialista em Educação Sexual, Emocional e Prevenção ao Abuso Sexual"
             class="hero-photo"
             loading="eager"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            onerror="this.style.display='none';"
           >
-          <div class="hero-photo-placeholder" style="display:none;">
-            <i class="fas fa-image"></i>
-            <span>Salve a imagem como <strong>LevanyRogge.jpeg</strong> na pasta levanny</span>
-          </div>
         </div>
       </div>
     </div>
