@@ -865,6 +865,18 @@
     .footer-bottom-right { display: flex; gap: 20px; }
     .footer-bottom-link { font-size: 0.75rem; color: rgba(255,255,255,0.35); transition: color 0.2s; }
     .footer-bottom-link:hover { color: rgba(255,255,255,0.7); }
+    .footer-credit {
+      padding-block: 14px 20px;
+      text-align: center;
+      font-size: 0.6875rem;
+      color: rgba(255,255,255,0.25);
+    }
+    .footer-credit a {
+      color: rgba(255,255,255,0.45);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .footer-credit a:hover { color: var(--color-secondary); }
 
     /* ============================================================
        RESPONSIVIDADE — MOBILE-FIRST (min-width)
@@ -1858,6 +1870,10 @@
         <span style="color:rgba(255,255,255,0.15)">|</span>
         <a href="#" class="footer-bottom-link">Termos de Uso</a>
       </div>
+    </div>
+
+    <div class="footer-credit">
+      Desenvolvido por <a href="https://myfluxlabs.netlify.app/" target="_blank" rel="noopener noreferrer">MyFlux Labs</a>
     </div>
   </div>
 </footer>
